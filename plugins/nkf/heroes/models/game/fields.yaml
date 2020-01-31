@@ -1,0 +1,10 @@
+fields:
+    title:
+        label: 'nkf.heroes::lang.settings.title'
+        span: auto
+        type: text
+    description:
+        label: 'nkf.heroes::lang.settings.description'
+        size: large
+        span: auto
+        type: textarea

@@ -1,0 +1,10 @@
+name: Games
+form: $/nkf/heroes/models/game/fields.yaml
+modelClass: Nkf\Heroes\Models\Game
+defaultRedirect: nkf/heroes/games
+create:
+    redirect: 'nkf/heroes/games/update/:id'
+    redirectClose: nkf/heroes/games
+update:
+    redirect: nkf/heroes/games
+    redirectClose: nkf/heroes/games

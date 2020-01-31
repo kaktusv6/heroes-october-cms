@@ -1,0 +1,11 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table nkf_heroes_games'
+    - builder_table_create_nkf_heroes_games.php
+1.0.3:
+    - 'Created table nkf_heroes_characteristics'
+    - builder_table_create_nkf_heroes_characteristics.php
+1.0.4:
+    - 'Updated table nkf_heroes_characteristics'
+    - builder_table_update_nkf_heroes_characteristics.php

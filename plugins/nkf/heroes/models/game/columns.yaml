@@ -1,0 +1,7 @@
+columns:
+    title:
+        label: 'nkf.heroes::lang.settings.title'
+        type: text
+    description:
+        label: 'nkf.heroes::lang.settings.description'
+        type: switch

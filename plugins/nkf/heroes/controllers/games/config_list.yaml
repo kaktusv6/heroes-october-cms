@@ -1,0 +1,12 @@
+list: $/nkf/heroes/models/game/columns.yaml
+modelClass: Nkf\Heroes\Models\Game
+title: Games
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'nkf/heroes/games/update/:id'

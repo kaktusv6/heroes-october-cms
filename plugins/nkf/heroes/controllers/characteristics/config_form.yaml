@@ -1,0 +1,10 @@
+name: Characteristics
+form: $/nkf/heroes/models/characteristic/fields.yaml
+modelClass: Nkf\Heroes\Models\Characteristic
+defaultRedirect: nkf/heroes/characteristics
+create:
+    redirect: 'nkf/heroes/characteristics/update/:id'
+    redirectClose: nkf/heroes/characteristics
+update:
+    redirect: nkf/heroes/characteristics
+    redirectClose: nkf/heroes/characteristics

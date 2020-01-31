@@ -1,0 +1,20 @@
+plugin:
+    name: 'nkf.heroes::lang.plugin.name'
+    description: 'nkf.heroes::lang.plugin.description'
+    author: nkf
+    icon: oc-icon-github-alt
+    homepage: ''
+navigation:
+    heroes:
+        label: 'nkf.heroes::lang.plugin.name'
+        url: nkf/heroes/
+        icon: icon-github-alt
+        sideMenu:
+            games:
+                label: 'nkf.heroes::lang.settings.games'
+                url: nkf/heroes/games
+                icon: icon-tasks
+            characteristics:
+                label: 'nkf.heroes::lang.settings.characteristics'
+                url: nkf/heroes/characteristics
+                icon: icon-sliders
