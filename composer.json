@@ -1,35 +1,17 @@
 {
-    "name": "october/october",
-    "description": "OctoberCMS",
-    "homepage": "https://octobercms.com",
+    "name": "kaktusv6/heroes",
+    "description": "API for heroes role games",
     "type": "project",
-    "keywords": ["october", "cms", "octobercms", "laravel"],
+    "keywords": ["october", "cms", "octobercms", "laravel", "heroes", "D&D"],
     "license": "MIT",
     "authors": [
         {
             "name": "Alexey Bobkov",
             "email": "aleksey.bobkov@gmail.com",
             "role": "Co-founder"
-        },
-        {
-            "name": "Samuel Georges",
-            "email": "daftspunky@gmail.com",
-            "role": "Co-founder"
-        },
-        {
-            "name": "Luke Towers",
-            "email": "octobercms@luketowers.ca",
-            "homepage": "https://luketowers.ca",
-            "role": "Maintainer"
         }
     ],
-    "support": {
-        "issues": "https://github.com/octobercms/october/issues",
-        "forum": "https://octobercms.com/forum/",
-        "docs": "https://octobercms.com/docs/",
-        "irc": "irc://irc.freenode.net/october",
-        "source": "https://github.com/octobercms/october"
-    },
+    "support": {},
     "require": {
         "php": ">=7.1",
         "ext-mbstring": "*",
@@ -39,10 +21,11 @@
         "october/backend": "~1.0",
         "october/cms": "~1.0",
         "laravel/framework": "^5.5.40",
-        "wikimedia/composer-merge-plugin": "dev-master"
+        "wikimedia/composer-merge-plugin": "dev-master",
+      "ext-json": "*",
+        "fzaninotto/faker": "^1.9"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.7",
         "phpunit/phpunit": "~6.5",
         "phpunit/phpunit-selenium": "~1.2",
         "meyfa/phpunit-assert-gd": "1.1.0",
@@ -71,7 +54,7 @@
     "config": {
         "preferred-install": "dist",
         "platform": {
-            "php": "7.0.8"
+            "php": "7.3.11"
         }
     },
     "minimum-stability": "dev",
