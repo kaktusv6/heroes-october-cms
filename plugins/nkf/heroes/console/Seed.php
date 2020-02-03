@@ -1,8 +1,9 @@
-<?php namespace Nkf\Heroes\Console;
+<?php declare(strict_types=1);
+
+namespace Nkf\Heroes\Console;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
+use Nkf\Heroes\HeroesSeeder;
 
 class Seed extends Command
 {
@@ -11,33 +12,15 @@ class Seed extends Command
 
     protected $seeder;
 
-    /**
-     * Seed constructor.
-     * @param $seeder
-     */
     public function __construct()
     {
-        $this->seeder = $seeder;
+        parent::__construct();
+        $this->seeder = new HeroesSeeder;
     }
 
-
-    /**
-     * Execute the console command.
-     * @return void
-     */
-    public function handle()
+    public function handle(): void
     {
-
+        $this->seeder->run();
         $this->output->writeln('Seed success');
-    }
-
-    protected function getArguments()
-    {
-        return [];
-    }
-
-    protected function getOptions()
-    {
-        return [];
     }
 }
