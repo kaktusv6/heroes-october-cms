@@ -2,7 +2,7 @@
 
 namespace Nkf\Heroes\Utils;
 
-class FileUtil extends Util
+class FileUtils extends Utils
 {
     public static function getContent(string $path): string
     {

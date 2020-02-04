@@ -3,7 +3,7 @@
 namespace Nkf\Heroes\Utils;
 
 
-abstract class Util
+abstract class Utils
 {
 
 }

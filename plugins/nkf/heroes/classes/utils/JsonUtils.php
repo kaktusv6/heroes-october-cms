@@ -2,9 +2,7 @@
 
 namespace Nkf\Heroes\Utils;
 
-use phpDocumentor\Reflection\Types\Mixed_;
-
-class JsonUtil extends Util
+class JsonUtils extends Utils
 {
     public static function decode(string $json): mixed
     {
@@ -13,6 +11,6 @@ class JsonUtil extends Util
 
     public static function decodeFile(string $pathToFile): mixed
     {
-        return self::decode(FileUtil::getContent($pathToFile));
+        return self::decode(FileUtils::getContent($pathToFile));
     }
 }
