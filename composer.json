@@ -6,9 +6,9 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Alexey Bobkov",
-            "email": "aleksey.bobkov@gmail.com",
-            "role": "Co-founder"
+            "name": "Vasiliy Nikiforov",
+            "email": "kaktusv6@gmail.com",
+            "role": "Maintainer"
         }
     ],
     "support": {},
@@ -22,7 +22,7 @@
         "october/cms": "~1.0",
         "laravel/framework": "^5.5.40",
         "wikimedia/composer-merge-plugin": "dev-master",
-      "ext-json": "*",
+        "ext-json": "*",
         "fzaninotto/faker": "^1.9"
     },
     "require-dev": {
@@ -34,11 +34,7 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/concerns/InteractsWithAuthentication.php",
-            "tests/fixtures/backend/models/UserFixture.php",
-            "tests/TestCase.php",
-            "tests/UiTestCase.php",
-            "tests/PluginTestCase.php"
+           "plugins/nkf/heroes"
         ]
     },
     "scripts": {
@@ -52,10 +48,7 @@
         ]
     },
     "config": {
-        "preferred-install": "dist",
-        "platform": {
-            "php": "7.3.11"
-        }
+        "preferred-install": "dist"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
