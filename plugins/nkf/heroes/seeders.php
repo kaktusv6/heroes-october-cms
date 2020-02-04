@@ -1,30 +1,27 @@
 <?php declare(strict_types=1);
 
-namespace Nkf\Heroes;
-
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Nkf\Heroes\Models\Characteristic;
 use Nkf\Heroes\Models\Game;
-use Nkf\Heroes\Utils\FileUtil;
-use Nkf\Heroes\Utils\JsonUtil;
+use Nkf\Heroes\Utils\FileUtils;
+use Nkf\Heroes\Utils\JsonUtils;
 
-class HeroesSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
     private $pathToDirJson;
     private $faker;
 
     public function __construct()
     {
-        $this->pathToDirJson = FileUtil::concatPaths(base_path(), 'plugins', 'nkf', 'heroes', 'json_data');
+        $this->pathToDirJson = FileUtils::concatPaths(base_path(), 'plugins', 'nkf', 'heroes', 'json_data');
         $this->faker = Factory::create();
-        parent::__construct();
     }
 
 
     private function getDataFromJson(string $fileName): mixed
     {
-        return JsonUtil::decodeFile(FileUtil::concatPaths($this->pathToDirJson, $fileName.'.json'));
+        return JsonUtils::decodeFile(FileUtils::concatPaths($this->pathToDirJson, $fileName.'.json'));
     }
 
     public function run(): void
