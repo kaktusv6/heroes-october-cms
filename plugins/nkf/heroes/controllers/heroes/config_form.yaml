@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Hero
+
+# Model Form Field configuration
+form: $/nkf/heroes/models/hero/fields.yaml
+
+# Model Class name
+modelClass: Nkf\Heroes\Models\Hero
+
+# Default redirect location
+defaultRedirect: nkf/heroes/heroes
+
+# Create page
+create:
+    title: Create Hero
+    redirect: nkf/heroes/heroes/update/:id
+    redirectClose: nkf/heroes/heroes
+
+# Update page
+update:
+    title: Edit Hero
+    redirect: nkf/heroes/heroes
+    redirectClose: nkf/heroes/heroes
+
+# Preview page
+preview:
+    title: Preview Hero

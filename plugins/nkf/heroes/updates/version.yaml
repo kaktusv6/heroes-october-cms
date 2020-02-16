@@ -9,3 +9,6 @@
 1.0.4:
     - 'Updated table nkf_heroes_characteristics'
     - builder_table_update_nkf_heroes_characteristics.php
+1.0.5:
+    - 'Created table nkf_heroes_heroes'
+    - builder_table_create_nkf_heroes_heroes.php

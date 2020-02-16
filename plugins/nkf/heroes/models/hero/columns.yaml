@@ -1,0 +1,13 @@
+columns:
+    name:
+        label: 'nkf.heroes::lang.settings.name'
+        type: text
+        searchable: true
+        width: 50%
+    game:
+        label: 'nkf.heroes::lang.settings.game'
+        type: number
+        searchable: false
+        relation: game
+        width: 50%
+        valueFrom: title

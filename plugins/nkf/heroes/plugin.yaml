@@ -18,3 +18,7 @@ navigation:
                 label: 'nkf.heroes::lang.settings.characteristics'
                 url: nkf/heroes/characteristics
                 icon: icon-sliders
+            heroes:
+                label: 'nkf.heroes::lang.settings.heroes'
+                url: nkf/heroes/heroes
+                icon: icon-users
