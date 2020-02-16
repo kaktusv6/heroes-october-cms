@@ -8,3 +8,15 @@ fields:
         size: large
         span: auto
         type: textarea
+    entities:
+        label: 'nkf.heroes::lang.settings.entites'
+        prompt: 'Add new item'
+        span: auto
+        type: repeater
+        form:
+            fields:
+                entity:
+                    label: 'nkf.heroes::lang.settings.entity'
+                    showSearch: true
+                    span: auto
+                    type: dropdown

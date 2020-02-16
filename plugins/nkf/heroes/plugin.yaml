@@ -7,7 +7,7 @@ plugin:
 navigation:
     heroes:
         label: 'nkf.heroes::lang.plugin.name'
-        url: nkf/heroes/
+        url: nkf/heroes/games
         icon: icon-github-alt
         sideMenu:
             games:
