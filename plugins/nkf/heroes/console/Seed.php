@@ -2,8 +2,8 @@
 
 namespace Nkf\Heroes\Console;
 
+use DatabaseSeeder;
 use Illuminate\Console\Command;
-use Nkf\Heroes\HeroesSeeder;
 
 class Seed extends Command
 {
@@ -15,7 +15,7 @@ class Seed extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->seeder = new HeroesSeeder;
+        $this->seeder = new DatabaseSeeder();
     }
 
     public function handle(): void
