@@ -2,6 +2,7 @@
 
 namespace Nkf\Heroes\Utils;
 
+
 class FileUtils extends Utils
 {
     public static function getContent(string $path): string
@@ -9,12 +10,11 @@ class FileUtils extends Utils
         return file_get_contents($path);
     }
 
-    public static function concatPaths(): string
+    public static function join(...$paths): string
     {
-        $path = '';
-        foreach (func_get_args() as $param) {
-            $path .= '/'.$param;
+        foreach ($paths as $key => $path) {
+            $paths[$key] = trim($path, DIRECTORY_SEPARATOR);
         }
-        return $path;
+        return implode(DIRECTORY_SEPARATOR, $paths);
     }
 }
