@@ -17,6 +17,9 @@ use October\Rain\Database\Traits\Validation;
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Hero whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Hero whereName($value)
  * @mixin \Eloquent
+ * @property int $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Hero whereUserId($value)
+ * @property-read \Nkf\Heroes\Models\User $user
  */
 class Hero extends Model
 {
@@ -29,9 +32,17 @@ class Hero extends Model
         'game_id' => 'required|min:1',
     ];
 
-    public $belongsTo = ['game' => Game::class];
+    public $belongsTo = [
+        'game' => Game::class,
+        'user' => User::class,
+    ];
     public function game(): BelongsTo
     {
         return $this->belongsTo(Game::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

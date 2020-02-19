@@ -15,6 +15,7 @@ class CreateHeroesTable extends Migration
             $table->unsignedInteger('user_id');
 
             $table->foreign('game_id')->on('nkf_heroes_games')->references('id');
+            $table->foreign('user_id')->on('nkf_heroes_users')->references('id');
         });
     }
 

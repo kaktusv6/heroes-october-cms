@@ -1,0 +1,5 @@
+columns:
+    login:
+        label: 'nkf.heroes::lang.settings.login'
+        type: text
+        searchable: true
