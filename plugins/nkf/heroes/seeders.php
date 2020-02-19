@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+use Nkf\Heroes\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
@@ -98,9 +99,19 @@ class FixtureSeeder extends Seeder
                 $characteristic->description = $this->faker->text;
                 $characteristic->range = [['min' => 0, 'max' => 100]];
                 $characteristic->range_generator = [['min' => 20, 'max' => 40]];
-                $characteristic->game_id = $gameId;
                 $characteristic->save();
+                $characteristic->games()->sync($gameId);
             }
+        }
+
+        $users = [];
+        for ($i = random_int(3, 5); $i --> 0;)
+        {
+            $user = new User;
+            $user->login = $this->faker->text(5);
+            $user->password = $this->faker->password;
+            $user->save();
+            $users[] = $user->id;
         }
 
         for ($i = random_int(10, 20); $i --> 0;)
@@ -108,7 +119,7 @@ class FixtureSeeder extends Seeder
             $hero = new Hero;
             $hero->name = $this->faker->text;
             $hero->game_id = $this->faker->randomElement($games);
-            $hero->user_id = $this->faker->numberBetween();
+            $hero->user_id = $this->faker->randomElement($users);
             $hero->save();
         }
     }

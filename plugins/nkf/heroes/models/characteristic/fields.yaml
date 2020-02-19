@@ -8,7 +8,7 @@ fields:
         size: ''
         span: auto
         type: textarea
-    game:
+    games:
         label: 'nkf.heroes::lang.settings.game'
         nameFrom: title
         descriptionFrom: description

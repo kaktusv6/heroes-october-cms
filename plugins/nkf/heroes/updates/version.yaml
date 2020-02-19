@@ -2,16 +2,19 @@
     - 'Initialize plugin.'
 1.0.2:
     - 'Created table nkf_heroes_games'
-    - builder_table_create_nkf_heroes_games.php
+    - 2020_01_09_1000_create_nkf_heroes_games.php
 1.0.3:
     - 'Created table nkf_heroes_characteristics'
-    - builder_table_create_nkf_heroes_characteristics.php
+    - 2020_01_10_1020_create_nkf_heroes_characteristics.php
 1.0.4:
     - 'Updated table nkf_heroes_characteristics'
-    - builder_table_update_nkf_heroes_characteristics.php
+    - 2020_01_10_1245_update_nkf_heroes_characteristics.php
 1.0.5:
     - 'Created table nkf_heroes_heroes'
-    - builder_table_create_nkf_heroes_heroes.php
+    - 2020_01_11_1145_create_nkf_heroes_heroes.php
 1.0.6:
     - 'Created table nkf_heroes_users'
-    - builder_table_create_nkf_heroes_users.php
+    - 2020_02_19_0920_create_nkf_heroes_users.php
+1.0.7:
+    - 'Created table nkf_heroes_properties_games'
+    - 2020_02_19_1216_create_nkf_heroes_properties_games.php

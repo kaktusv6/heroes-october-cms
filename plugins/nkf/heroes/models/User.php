@@ -16,6 +16,7 @@ use October\Rain\Database\Traits\Validation;
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\User whereLogin($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\User wherePassword($value)
  * @mixin \Eloquent
+ * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\Hero[] $heroes
  */
 class User extends Model
 {

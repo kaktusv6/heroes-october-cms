@@ -2,7 +2,7 @@
 
 namespace Nkf\Heroes\Models;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Model;
 use October\Rain\Database\Traits\Validation;
 
@@ -16,6 +16,8 @@ use October\Rain\Database\Traits\Validation;
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Game whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Game whereTitle($value)
  * @mixin \Eloquent
+ * @property string|null $properties
+ * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Game whereProperties($value)
  */
 class Game extends Model
 {
@@ -26,16 +28,8 @@ class Game extends Model
     public $rules = [
         'title' => 'required|max:255',
     ];
-    public $jsonable = ['entities'];
 
-    public function getEntityOptions(): array
-    {
-        return DB::table('information_schema.COLUMNS')
-            ->select('TABLE_NAME')
-            ->where('TABLE_SCHEMA', 'LIKE', 'heroes', 'and')
-            ->where('COLUMN_NAME', 'LIKE', 'game_id')->get()
-            ->map(function ($val) {
-                return $val->TABLE_NAME;
-            })->toArray();
-    }
+    public $morphedByMany = [
+        'characteristics' => [Characteristic::class, 'table' => 'nkf_heroes_properties_games', 'name' => 'property'],
+    ];
 }
