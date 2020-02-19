@@ -3,6 +3,7 @@
 namespace Nkf\Heroes\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use October\Rain\Database\Relations\MorphMany;
 use \October\Rain\Database\Traits\Validation;
 use Model;
 
@@ -33,7 +34,6 @@ class Characteristic extends Model
 
     public $rules = [
         'title' => 'required',
-        'game_id' => 'required',
         'range' => 'required',
         'range_generator' => 'required',
     ];
@@ -47,4 +47,8 @@ class Characteristic extends Model
     {
         return $this->belongsTo(Game::class);
     }
+
+    public $morphToMany = [
+        'games' => [Game::class, 'table' => 'nkf_heroes_properties_games', 'name' => 'property']
+    ];
 }
