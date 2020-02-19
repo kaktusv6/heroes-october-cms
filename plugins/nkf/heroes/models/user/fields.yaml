@@ -1,0 +1,5 @@
+fields:
+    login:
+        label: 'nkf.heroes::lang.settings.login'
+        span: auto
+        type: text

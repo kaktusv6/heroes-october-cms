@@ -7,7 +7,7 @@ plugin:
 navigation:
     heroes:
         label: 'nkf.heroes::lang.plugin.name'
-        url: nkf/heroes/games
+        url: nkf/heroes/
         icon: icon-github-alt
         sideMenu:
             games:
@@ -18,3 +18,11 @@ navigation:
                 label: 'nkf.heroes::lang.settings.characteristics'
                 url: nkf/heroes/characteristics
                 icon: icon-sliders
+            heroes:
+                label: 'nkf.heroes::lang.settings.heroes'
+                url: nkf/heroes/heroes
+                icon: icon-users
+            users:
+                label: 'nkf.heroes::lang.settings.users'
+                url: nkf/heroes/users
+                icon: icon-user
