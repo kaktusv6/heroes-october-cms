@@ -15,7 +15,6 @@ class BuilderTableCreateNkfHeroesGames extends Migration
             $table->increments('id')->unsigned();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->mediumText('entities')->nullable();
         });
     }
 

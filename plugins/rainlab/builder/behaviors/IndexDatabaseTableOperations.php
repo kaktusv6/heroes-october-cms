@@ -1,5 +1,6 @@
 <?php namespace RainLab\Builder\Behaviors;
 
+use Carbon\Carbon;
 use RainLab\Builder\Classes\IndexOperationsBehaviorBase;
 use RainLab\Builder\Classes\DatabaseTableModel;
 use Backend\Behaviors\FormController;
@@ -87,11 +88,11 @@ class IndexDatabaseTableOperations extends IndexOperationsBehaviorBase
         $operation = Input::get('operation');
         $table = Input::get('table');
 
-        $model->scriptFileName = 'builder_table_'.$operation.'_'.$table;
+        $model->scriptFileName = Carbon::now()->format('Y_m_d_hi_').$operation.'_'.$table;
         $model->makeScriptFileNameUnique();
 
         $codeGenerator = new TableMigrationCodeGenerator();
-        $model->code = $codeGenerator->wrapMigrationCode($model->scriptFileName, $model->code, $pluginCode);
+        $model->code = $codeGenerator->wrapMigrationCode($operation.'_'.$table, $model->code, $pluginCode);
 
         try {
             $model->save();

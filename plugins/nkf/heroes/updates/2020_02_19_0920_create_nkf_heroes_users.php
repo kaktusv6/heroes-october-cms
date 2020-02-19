@@ -16,10 +16,17 @@ class BuilderTableCreateNkfHeroesUsers extends Migration
             $table->string('login');
             $table->text('password');
         });
+
+        Schema::table('nkf_heroes_heroes', function (Blueprint $table) {
+            $table->foreign('user_id')->on('nkf_heroes_users')->references('id');
+        });
     }
-    
+
     public function down()
     {
+        Schema::table('nkf_heroes_heroes', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('nkf_heroes_users');
     }
 }
