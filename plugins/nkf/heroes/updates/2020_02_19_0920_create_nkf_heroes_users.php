@@ -10,14 +10,13 @@ class BuilderTableCreateNkfHeroesUsers extends Migration
 {
     public function up()
     {
-        Schema::create('nkf_heroes_users', function($table)
-        {
+        Schema::create('nkf_heroes_users', function (Blueprint $table) : void {
             $table->increments('id');
             $table->string('login');
             $table->text('password');
         });
 
-        Schema::table('nkf_heroes_heroes', function (Blueprint $table) {
+        Schema::table('nkf_heroes_heroes', function (Blueprint $table) : void {
             $table->foreign('user_id')->on('nkf_heroes_users')->references('id');
         });
     }

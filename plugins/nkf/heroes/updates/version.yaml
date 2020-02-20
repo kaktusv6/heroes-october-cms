@@ -7,14 +7,11 @@
     - 'Created table nkf_heroes_characteristics'
     - 2020_01_10_1020_create_nkf_heroes_characteristics.php
 1.0.4:
-    - 'Updated table nkf_heroes_characteristics'
-    - 2020_01_10_1245_update_nkf_heroes_characteristics.php
-1.0.5:
     - 'Created table nkf_heroes_heroes'
     - 2020_01_11_1145_create_nkf_heroes_heroes.php
-1.0.6:
+1.0.5:
     - 'Created table nkf_heroes_users'
     - 2020_02_19_0920_create_nkf_heroes_users.php
-1.0.7:
+1.0.6:
     - 'Created table nkf_heroes_properties_games'
     - 2020_02_19_1216_create_nkf_heroes_properties_games.php

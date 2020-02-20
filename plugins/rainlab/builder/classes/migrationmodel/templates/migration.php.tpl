@@ -8,9 +8,10 @@ class {className} extends Migration
 {
     public function up()
     {
-        // Schema::create('{tableNamePrefix}_table', function(Blueprint $table)
-        // {
-        // });
+        Schema::create('{tableNamePrefix}_table', function(Blueprint $table) : void {
+        {
+            // TODO
+        });
     }
 
     public function down()

@@ -10,8 +10,7 @@ class BuilderTableCreateNkfHeroesCharacteristics extends Migration
 {
     public function up()
     {
-        Schema::create('nkf_heroes_characteristics', function(Blueprint $table)
-        {
+        Schema::create('nkf_heroes_characteristics', function (Blueprint $table) : void {
             $table->increments('id')->unsigned();
             $table->string('title');
             $table->text('description')->nullable();

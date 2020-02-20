@@ -8,7 +8,7 @@ class CreateHeroesTable extends Migration
 {
     public function up()
     {
-        Schema::create('nkf_heroes_heroes', function (Blueprint $table) {
+        Schema::create('nkf_heroes_heroes', function (Blueprint $table) : void {
             $table->increments('id');
             $table->text('name');
             $table->unsignedInteger('game_id');
