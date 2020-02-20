@@ -117,10 +117,14 @@ class FixtureSeeder extends Seeder
         for ($i = random_int(10, 20); $i --> 0;)
         {
             $hero = new Hero;
-            $hero->name = $this->faker->text;
+            $hero->name = $this->faker->text(5);
             $hero->game_id = $this->faker->randomElement($games);
             $hero->user_id = $this->faker->randomElement($users);
             $hero->save();
+
+            foreach ($hero->game->characteristics as $characteristic) {
+                $hero->characteristics()->save($characteristic, ['value_type' => 'int', 'value' => random_int(20, 40)]);
+            }
         }
     }
 }

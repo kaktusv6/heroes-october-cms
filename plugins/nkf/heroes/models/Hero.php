@@ -45,4 +45,8 @@ class Hero extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public $morphedByMany = [
+        'characteristics' => [Characteristic::class, 'table' => 'nkf_heroes_properties_heroes', 'name' => 'property'],
+    ];
 }

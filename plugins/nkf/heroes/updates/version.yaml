@@ -15,3 +15,6 @@
 1.0.6:
     - 'Created table nkf_heroes_properties_games'
     - 2020_02_19_1216_create_nkf_heroes_properties_games.php
+1.0.7:
+    - 'Created table nkf_heroes_properties_heroes'
+    - 2020_02_20_1112_create_nkf_heroes_properties_heroes.php
