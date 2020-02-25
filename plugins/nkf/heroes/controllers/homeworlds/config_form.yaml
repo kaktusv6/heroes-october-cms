@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Home World
+
+# Model Form Field configuration
+form: $/nkf/heroes/models/homeworld/fields.yaml
+
+# Model Class name
+modelClass: Nkf\Heroes\Models\HomeWorld
+
+# Default redirect location
+defaultRedirect: nkf/heroes/homeworlds
+
+# Create page
+create:
+    title: Create Home World
+    redirect: nkf/heroes/homeworlds/update/:id
+    redirectClose: nkf/heroes/homeworlds
+
+# Update page
+update:
+    title: Edit Home World
+    redirect: nkf/heroes/homeworlds
+    redirectClose: nkf/heroes/homeworlds
+
+# Preview page
+preview:
+    title: Preview Home World

@@ -20,6 +20,9 @@ use October\Rain\Database\Traits\Validation;
  * @property int $user_id
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Hero whereUserId($value)
  * @property-read \Nkf\Heroes\Models\User $user
+ * @property int|null $home_world_id
+ * @property-read \Nkf\Heroes\Models\HomeWorld|null $homeWorld
+ * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Hero whereHomeWorldId($value)
  */
 class Hero extends Model
 {
@@ -35,6 +38,7 @@ class Hero extends Model
     public $belongsTo = [
         'game' => Game::class,
         'user' => User::class,
+        'homeWorld' => HomeWorld::class,
     ];
     public function game(): BelongsTo
     {
@@ -44,6 +48,11 @@ class Hero extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function homeWorld(): BelongsTo
+    {
+        return $this->belongsTo(HomeWorld::class);
     }
 
     public $morphedByMany = [

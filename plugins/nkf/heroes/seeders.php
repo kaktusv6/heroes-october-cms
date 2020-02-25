@@ -102,6 +102,26 @@ class FixtureSeeder extends Seeder
                 $characteristic->save();
                 $characteristic->games()->sync($gameId);
             }
+
+            foreach ([
+                         [
+                             'title' => 'Мир улий',
+                         ],
+                         [
+                             'title' => 'Имперский мир',
+                         ],
+                         [
+                             'title' => 'Дикий мир',
+                         ],
+                         [
+                             'title' => 'Мир кузница',
+                         ]
+                     ] as $item) {
+                $world = new HomeWorld;
+                $world->title = $item['title'];
+                $world->save();
+                $world->games()->sync($gameId);
+            }
         }
 
         $users = [];
@@ -120,6 +140,10 @@ class FixtureSeeder extends Seeder
             $hero->name = $this->faker->text(5);
             $hero->game_id = $this->faker->randomElement($games);
             $hero->user_id = $this->faker->randomElement($users);
+            $homeWorlds = $hero->game->homeWorlds->map(function (HomeWorld $world) {
+                return $world->id;
+            });
+            $hero->home_world_id = $this->faker->randomElement($homeWorlds);
             $hero->save();
 
             foreach ($hero->game->characteristics as $characteristic) {

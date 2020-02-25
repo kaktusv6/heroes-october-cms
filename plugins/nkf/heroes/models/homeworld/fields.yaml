@@ -1,0 +1,11 @@
+fields:
+    games:
+        label: 'nkf.heroes::lang.settings.game'
+        nameFrom: title
+        descriptionFrom: description
+        span: auto
+        type: relation
+    title:
+        label: 'nkf.heroes::lang.settings.title'
+        span: left
+        type: text

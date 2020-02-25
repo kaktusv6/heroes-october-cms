@@ -10,6 +10,10 @@ navigation:
         url: nkf/heroes/
         icon: icon-github-alt
         sideMenu:
+            users:
+                label: 'nkf.heroes::lang.settings.users'
+                url: nkf/heroes/users
+                icon: icon-user
             games:
                 label: 'nkf.heroes::lang.settings.games'
                 url: nkf/heroes/games
@@ -22,7 +26,7 @@ navigation:
                 label: 'nkf.heroes::lang.settings.heroes'
                 url: nkf/heroes/heroes
                 icon: icon-users
-            users:
-                label: 'nkf.heroes::lang.settings.users'
-                url: nkf/heroes/users
-                icon: icon-user
+            home-worlds:
+                label: 'nkf.heroes::lang.settings.home_worlds'
+                url: nkf/heroes/homeworlds
+                icon: icon-adjust

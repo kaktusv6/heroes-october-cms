@@ -31,5 +31,6 @@ class Game extends Model
 
     public $morphedByMany = [
         'characteristics' => [Characteristic::class, 'table' => 'nkf_heroes_properties_games', 'name' => 'property'],
+        'homeWorlds' => [HomeWorld::class, 'table' => 'nkf_heroes_properties_games', 'name' => 'property'],
     ];
 }
