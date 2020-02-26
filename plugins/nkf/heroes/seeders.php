@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+use Nkf\Enums\TypeValue;
+use Nkf\Heroes\Models\HomeWorld;
 use Nkf\Heroes\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
@@ -66,33 +68,33 @@ class FixtureSeeder extends Seeder
 
         foreach ($games as $gameId) {
             foreach ([
-                        [
-                            'title' => 'WS',
-                        ],
-                        [
-                            'title' => 'BS',
-                        ],
-                        [
-                            'title' => 'Strange',
-                        ],
-                        [
-                            'title' => 'Tought',
-                        ],
-                        [
-                            'title' => 'Agility',
-                        ],
-                        [
-                            'title' => 'Intelligence',
-                        ],
-                        [
-                            'title' => 'Perception',
-                        ],
-                        [
-                            'title' => 'Will power',
-                        ],
-                        [
-                            'title' => 'Fellow ship',
-                        ],
+                         [
+                             'title' => 'WS',
+                         ],
+                         [
+                             'title' => 'BS',
+                         ],
+                         [
+                             'title' => 'Strange',
+                         ],
+                         [
+                             'title' => 'Tought',
+                         ],
+                         [
+                             'title' => 'Agility',
+                         ],
+                         [
+                             'title' => 'Intelligence',
+                         ],
+                         [
+                             'title' => 'Perception',
+                         ],
+                         [
+                             'title' => 'Will power',
+                         ],
+                         [
+                             'title' => 'Fellow ship',
+                         ],
                      ] as $characteristicData) {
                 $characteristic = new Characteristic;
                 $characteristic->title = $characteristicData['title'];
@@ -125,8 +127,7 @@ class FixtureSeeder extends Seeder
         }
 
         $users = [];
-        for ($i = random_int(3, 5); $i --> 0;)
-        {
+        for ($i = random_int(3, 5); $i-- > 0;) {
             $user = new User;
             $user->login = $this->faker->text(5);
             $user->password = $this->faker->password;
@@ -134,8 +135,7 @@ class FixtureSeeder extends Seeder
             $users[] = $user->id;
         }
 
-        for ($i = random_int(10, 20); $i --> 0;)
-        {
+        for ($i = random_int(10, 20); $i-- > 0;) {
             $hero = new Hero;
             $hero->name = $this->faker->text(5);
             $hero->game_id = $this->faker->randomElement($games);
