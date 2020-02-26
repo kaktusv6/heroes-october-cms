@@ -7,6 +7,16 @@ use System\Classes\PluginBase;
 
 class Plugin extends PluginBase
 {
+    public const MIDDLEWARE_ALIASES = [
+        'auth' =>
+    ];
+    public function boot()
+    {
+        parent::boot();
+        $route
+    }
+
+
     public function registerComponents()
     {
 
