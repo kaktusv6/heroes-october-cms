@@ -147,7 +147,9 @@ class FixtureSeeder extends Seeder
             $hero->save();
 
             foreach ($hero->game->characteristics as $characteristic) {
-                $hero->characteristics()->save($characteristic, ['value_type' => 'int', 'value' => random_int(20, 40)]);
+                $hero
+                    ->characteristics()
+                    ->save($characteristic, ['value_type' => TypeValue::INT, 'value' => random_int(20, 40)]);
             }
         }
     }
