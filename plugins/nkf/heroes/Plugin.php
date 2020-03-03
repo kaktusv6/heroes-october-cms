@@ -2,18 +2,19 @@
 
 namespace Nkf\Heroes;
 
+use Nkf\Heroes\Console\CreateMigration;
 use Nkf\Heroes\Console\Seed;
 use System\Classes\PluginBase;
 
 class Plugin extends PluginBase
 {
     public const MIDDLEWARE_ALIASES = [
-        'auth' =>
+//        'auth' =>
     ];
     public function boot()
     {
         parent::boot();
-        $route
+//        $route
     }
 
 
@@ -30,6 +31,7 @@ class Plugin extends PluginBase
     {
         parent::register();
         $this->registerConsoleCommand('heroes:name', Seed::class);
+        $this->registerConsoleCommand('make:migration', CreateMigration::class);
     }
 
 
