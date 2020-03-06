@@ -2,8 +2,8 @@
 
 namespace Nkf\Heroes;
 
-use Nkf\Heroes\Console\CreateMigration;
-use Nkf\Heroes\Console\Seed;
+use Nkf\Heroes\Commands\CreateMigration;
+use Nkf\Heroes\Commands\Seed;
 use System\Classes\PluginBase;
 
 class Plugin extends PluginBase
@@ -30,7 +30,7 @@ class Plugin extends PluginBase
     public function register()
     {
         parent::register();
-        $this->registerConsoleCommand('heroes:name', Seed::class);
+        $this->registerConsoleCommand('heroes:seed', Seed::class);
         $this->registerConsoleCommand('make:migration', CreateMigration::class);
     }
 
