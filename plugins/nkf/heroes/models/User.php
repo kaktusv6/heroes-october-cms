@@ -3,6 +3,7 @@
 namespace Nkf\Heroes\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Model;
 use October\Rain\Database\Traits\Validation;
 
@@ -40,5 +41,10 @@ class User extends Model
     public function heroes(): HasMany
     {
         return $this->hasMany(Hero::class);
+    }
+    public $hasOne = ['token' => UsersToken::class];
+    public function token(): HasOne
+    {
+        return $this->hasOne(UsersToken::class);
     }
 }
