@@ -29,6 +29,13 @@ class User extends Model
         'password' => 'required',
     ];
 
+    public function beforeSave(): void
+    {
+        if (object_get($this, 'id', null) === null) {
+            $this->password = base64_encode($this->password);
+        }
+    }
+
     public $hasMany = ['heroes' => Hero::class];
     public function heroes(): HasMany
     {
