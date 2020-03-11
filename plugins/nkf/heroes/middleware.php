@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Nkf\Content;
 
@@ -12,13 +12,13 @@ abstract class BaseMiddleware
     }
 }
 
-class Authorization extends BaseMiddleware
+class TokenAuthenticate extends BaseMiddleware
 {
 
     public function handle(Request $request, callable $next): void
     {
-        if ($request->token_auth) {
-
+        if ($request->cookie('token_user')) {
+            // todo check user by token
         }
         parent::handle($request, $next);
     }
