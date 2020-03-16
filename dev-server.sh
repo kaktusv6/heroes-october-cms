@@ -5,7 +5,7 @@ export $(egrep -v '^#' .env-dev | xargs)
 start() {
     nohup php artisan serve --port=${ARTISAN_SERVER_PORT} > ./dev-server.log 2>&1 &
     echo "development PHP web server started http://localhost:${ARTISAN_SERVER_PORT}"
-    echo "Dashboard started http://localhost:${ARTISAN_SERVER_PORT}/dashboard"
+    echo "Dashboard started http://localhost:${ARTISAN_SERVER_PORT}/backend"
     echo "log: dev-server.log"
     exit 0
 }
