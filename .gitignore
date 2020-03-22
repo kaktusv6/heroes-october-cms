@@ -4,6 +4,7 @@ composer.phar
 .DS_Store
 .idea
 .env
+.env-dev
 .env.*.php
 .env.php
 php_errors.log
@@ -19,6 +20,7 @@ composer.lock
 package-lock.json
 /node_modules
 _ide_helper.php
+dev-server.log
 
 # for netbeans
 nbproject
