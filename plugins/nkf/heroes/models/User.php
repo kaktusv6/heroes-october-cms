@@ -35,7 +35,7 @@ class User extends Model
     public function beforeSave(): void
     {
         if (object_get($this, 'id', null) === null) {
-            $this->password = base64_encode($this->password);
+            $this->password = PasswordUtils::encodePassword($this->password);
         }
     }
 
