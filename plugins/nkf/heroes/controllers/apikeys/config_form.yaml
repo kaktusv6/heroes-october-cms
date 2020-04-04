@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Api Key
+
+# Model Form Field configuration
+form: $/nkf/heroes/models/apikey/fields.yaml
+
+# Model Class name
+modelClass: Nkf\Heroes\Models\ApiKey
+
+# Default redirect location
+defaultRedirect: nkf/heroes/apikeys
+
+# Create page
+create:
+    title: Create Api Key
+    redirect: nkf/heroes/apikeys/update/:id
+    redirectClose: nkf/heroes/apikeys
+
+# Update page
+update:
+    title: Edit Api Key
+    redirect: nkf/heroes/apikeys
+    redirectClose: nkf/heroes/apikeys
+
+# Preview page
+preview:
+    title: Preview Api Key

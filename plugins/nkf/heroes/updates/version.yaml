@@ -24,3 +24,6 @@
 1.0.9:
     - 'Create users token'
     - 2020_03_23_0935_create_users_token.php
+1.1.0:
+    - 'Create api keys'
+    - 2020_03_28_1117_create_api_keys.php

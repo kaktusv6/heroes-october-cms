@@ -30,3 +30,12 @@ navigation:
                 label: 'nkf.heroes::lang.settings.home_worlds'
                 url: nkf/heroes/homeworlds
                 icon: icon-adjust
+    api:
+        label: 'nkf.heroes::lang.settings.api'
+        url: nkf/heroes/api
+        icon: icon-info-circle
+        sideMenu:
+            api-keys:
+                label: 'nkf.heroes::lang.settings.api_keys'
+                url: nkf/heroes/apikeys
+                icon: icon-key

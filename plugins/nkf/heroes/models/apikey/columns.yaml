@@ -1,0 +1,5 @@
+columns:
+    api_key:
+        label: 'nkf.heroes::lang.settings.api_key'
+        type: text
+        searchable: true
