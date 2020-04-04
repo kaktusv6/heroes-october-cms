@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Model;
 use October\Rain\Database\Traits\Validation;
+use Str;
 
 /**
  * UsersToken Model
@@ -24,7 +25,10 @@ class UsersToken extends Model
 {
     use Validation;
 
-    public $table = 'nkf_heroes_users_tokens';
+    public const SIZE_TOKEN = 10;
+
+    public $timestamps = false;
+    public $table = 'nkf_heroes_user_tokens';
     public $rules = [
         'token' => 'required',
         'user_id' => 'required|min:1',
@@ -34,5 +38,15 @@ class UsersToken extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public static function generateToken(int $userId): string
+    {
+        $token = Str::random(self::SIZE_TOKEN);
+        $userToken = new self;
+        $userToken->user_id = $userId;
+        $userToken->token = $token;
+        $userToken->save();
+        return $token;
     }
 }

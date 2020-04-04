@@ -21,3 +21,6 @@
 1.0.8:
     - 'Created table nkf_heroes_home_worlds'
     - 2020_02_21_1245_create_nkf_heroes_home_worlds.php
+1.0.9:
+    - 'Create users token'
+    - 2020_03_23_0935_create_users_token.php
