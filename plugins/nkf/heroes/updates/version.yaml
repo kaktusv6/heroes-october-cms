@@ -27,3 +27,6 @@
 1.1.0:
     - 'Create api keys'
     - 2020_03_28_1117_create_api_keys.php
+1.1.1:
+    - 'Update properties heroes'
+    - 2020_04_05_0549_update_properties_heroes.php

@@ -24,5 +24,6 @@
         'api' => 'API',
         'api_key' => 'Ключ API',
         'api_keys' => 'Ключи API',
+        'value' => 'Значение',
     ],
 ];
