@@ -2,17 +2,17 @@
 
 use Nkf\Content\ApiKey;
 use Nkf\Content\TokenAuthenticate;
-use Nkf\Heroes\Controllers\GamesController;
-use Nkf\Heroes\Controllers\TestController;
-use Nkf\Heroes\Controllers\UserController;
+use Nkf\Heroes\Api\Controllers\GameController;
+use Nkf\Heroes\Api\Controllers\TestController;
+use Nkf\Heroes\Api\Controllers\UserController;
 
 Route::group(['prefix' => 'api', 'middleware' => ApiKey::ALIAS], function () {
     Route::get('/', TestController::class . '@test');
-    Route::post('/user/register', UserController::class . '@register');
-    Route::post('/user/auth', UserController::class . '@auth');
+    Route::get('/user/register', UserController::class . '@register');
+    Route::get('/user/auth', UserController::class . '@auth');
 
     Route::group(['middleware' => TokenAuthenticate::ALIAS], function () {
-        Route::get('games', GamesController::class . '@games');
+        Route::get('games', GameController::class . '@games');
         Route::get('test', TestController::class . '@test');
     });
 });
