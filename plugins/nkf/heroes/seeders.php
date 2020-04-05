@@ -51,6 +51,11 @@ class FixtureSeeder extends Seeder
         $this->faker = Factory::create();
     }
 
+    public function username(): string
+    {
+        return str_replace('.', '', $this->faker->userName);
+    }
+
     public function run(): void
     {
         $games = [];
@@ -129,8 +134,8 @@ class FixtureSeeder extends Seeder
         $users = [];
         for ($i = random_int(3, 5); $i-- > 0;) {
             $user = new User;
-            $user->login = $this->faker->text(5);
-            $user->password = $this->faker->password;
+            $user->login = $this->username();
+            $user->password = $this->faker->password(6, 16);
             $user->save();
             $users[] = $user->id;
         }
