@@ -75,7 +75,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -136,6 +136,7 @@ return [
         // 'Illuminate\Html\HtmlServiceProvider', // Example
 
         'System\ServiceProvider',
+        \Nkf\Heroes\Classes\Services\AppServiceProvider::class,
     ]),
 
     /*

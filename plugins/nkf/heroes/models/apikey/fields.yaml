@@ -1,0 +1,6 @@
+fields:
+    api_key:
+        label: 'nkf.heroes::lang.settings.api_key'
+        span: auto
+        readOnly: 1
+        type: text

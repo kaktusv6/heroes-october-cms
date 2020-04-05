@@ -1,0 +1,28 @@
+<?php return [
+    'plugin' => [
+        'name' => 'heroes',
+        'description' => 'API for heroes role games',
+    ],
+    'settings' => [
+        'name' => 'Наименование',
+        'description' => 'Описание',
+        'range' => 'Диапозон',
+        'min' => 'Минимум',
+        'max' => 'Максимум',
+        'range_generator' => 'Диапозон для генератора',
+        'game' => 'Игра',
+        'games' => 'Игры',
+        'characteristics' => 'Характеристики',
+        'title' => 'Заголовок',
+        'heroes' => 'Персонажи',
+        'property' => 'Своство',
+        'properties' => 'Свойства',
+        'login' => 'Логин',
+        'users' => 'Пользователи',
+        'user' => 'Пользователь',
+        'home_worlds' => 'Родные миры',
+        'api' => 'API',
+        'api_key' => 'Ключ API',
+        'api_keys' => 'Ключи API',
+    ],
+];

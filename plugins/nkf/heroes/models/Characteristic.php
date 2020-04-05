@@ -3,7 +3,6 @@
 namespace Nkf\Heroes\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use October\Rain\Database\Relations\MorphMany;
 use \October\Rain\Database\Traits\Validation;
 use Model;
 
