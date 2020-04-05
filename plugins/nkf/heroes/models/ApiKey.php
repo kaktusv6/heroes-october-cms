@@ -23,7 +23,7 @@ class ApiKey extends Model
     public $timestamps = false;
     public $table = 'nkf_heroes_api_keys';
     public $rules = [
-        'api_key' => 'max:10|unique:api_key',
+        'api_key' => 'max:10|unique:nkf_heroes_api_keys',
     ];
 
     public function beforeSave(): void

@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
-use Nkf\Enums\TypeValue;
+use Nkf\Heroes\Models\ApiKey;
+use Nkf\Heroes\Models\CharacteristicsHero;
 use Nkf\Heroes\Models\HomeWorld;
 use Nkf\Heroes\Models\User;
 use Faker\Factory;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\App;
 use Nkf\Heroes\Models\Characteristic;
 use Nkf\Heroes\Models\Game;
 use Nkf\Heroes\Models\Hero;
+use Nkf\Heroes\Models\UsersToken;
 use Nkf\Heroes\Utils\StringUtils;
 
 class DatabaseSeeder extends Seeder
@@ -44,6 +46,9 @@ class InitalSeeder extends Seeder
 
 class FixtureSeeder extends Seeder
 {
+    private const API_KEY = 'KFu5xJtP3J';
+    private const TOKEN = 'dMdvyErGUg';
+
     private $faker;
 
     public function __construct()
@@ -56,8 +61,25 @@ class FixtureSeeder extends Seeder
         return str_replace('.', '', $this->faker->userName);
     }
 
+    public function generateApiKey(): void
+    {
+        $apiKey = new ApiKey;
+        $apiKey->api_key = self::API_KEY;
+        $apiKey->save();
+    }
+
+    public function generateToken(): void
+    {
+        $token = new UsersToken;
+        $token->token = self::TOKEN;
+        $token->user_id = User::get()->first()->id;
+        $token->save();
+    }
+
     public function run(): void
     {
+        $this->generateApiKey();
+
         $games = [];
         foreach ([
                      [
@@ -139,6 +161,8 @@ class FixtureSeeder extends Seeder
             $user->save();
             $users[] = $user->id;
         }
+
+        $this->generateToken();
 
         for ($i = random_int(10, 20); $i-- > 0;) {
             $hero = new Hero;
