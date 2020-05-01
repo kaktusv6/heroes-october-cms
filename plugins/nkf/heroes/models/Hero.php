@@ -3,7 +3,6 @@
 namespace Nkf\Heroes\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Model;
 use October\Rain\Database\Traits\Validation;
