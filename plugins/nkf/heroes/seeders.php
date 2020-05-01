@@ -169,7 +169,7 @@ class FixtureSeeder extends Seeder
 
         $this->generateToken();
 
-        for ($i = random_int(10, 20); $i-- > 0;) {
+        for ($i = random_int(2, 5); $i-- > 0;) {
             $hero = new Hero;
             $hero->name = $this->faker->text(5);
             $hero->game_id = $this->faker->randomElement($games);
