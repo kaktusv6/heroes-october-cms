@@ -10,7 +10,7 @@ use Nkf\Heroes\Api\Controllers\UserController;
 Route::group(['prefix' => 'api', 'middleware' => ApiKey::ALIAS], function () {
     Route::get('/', TestController::class . '@test');
     Route::get('/user/register', UserController::class . '@register');
-    Route::get('/user/auth', UserController::class . '@auth');
+    Route::get('/user/login', UserController::class . '@login');
 
     Route::group(['middleware' => TokenAuthenticate::ALIAS], function () {
         Route::get('games', GameController::class . '@games');

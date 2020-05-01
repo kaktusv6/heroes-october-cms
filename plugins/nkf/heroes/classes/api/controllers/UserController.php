@@ -29,7 +29,7 @@ class UserController extends ApiController
         return $this->responseJson(['token' => UsersToken::generateToken($user->id)]);
     }
 
-    public function auth(): JsonResponse
+    public function login(): JsonResponse
     {
         $data = $this->getValidateJsonData(self::RULES_USER);
         $user = User::whereLogin($data['login'])->first();
@@ -39,6 +39,7 @@ class UserController extends ApiController
         if ($user->password !== PasswordUtils::encodePassword($data['password'])) {
             throw new ApiException(trans('nkf.heroes::validation.errors.invalid_password'));
         }
-        return $this->responseJson(['token' => $user->token->token]);
+
+        return $this->responseJson(['token' => UsersToken::generateToken($user->id)]);
     }
 }
