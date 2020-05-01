@@ -31,6 +31,8 @@ class HeroController extends ApiController
         'characteristics.*.value' => 'required|numeric',
     ];
 
+    const RULES_REMOVE = ['hero_id' => 'required|numeric|min:1'];
+
     public function heroesUser(Request $request, HeroFormatter $heroFormatter): JsonResponse
     {
         $token = $this->getToken();
@@ -71,5 +73,16 @@ class HeroController extends ApiController
             $characteristicHero->save();
         }
         return $this->responseFormatData($hero, $heroFormatter);
+    }
+
+    public function remove(): JsonResponse
+    {
+        $userIdByToken = UsersToken::whereToken($this->getToken())->first()->user_id;
+        $data = $this->getValidateJsonData(self::RULES_REMOVE);
+        $hero = Hero::find($data['hero_id']);
+        if ($hero->user_id !== $userIdByToken) {
+            throw new ApiException(trans('nkf.heroes::validation.errors.hero_not_belong_user'));
+        }
+        return $this->responseJson(['is_remove' => $hero->delete()]);
     }
 }
