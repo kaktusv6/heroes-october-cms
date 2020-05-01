@@ -2,7 +2,6 @@
 
 namespace Nkf\Content;
 
-use Closure;
 use Illuminate\Http\Request;
 use Nkf\Heroes\Api\ApiException;
 use Nkf\Heroes\Models\ApiKey as ApiKeyModel;
@@ -20,12 +19,11 @@ abstract class BaseMiddleware
 
 class TokenAuthenticate extends BaseMiddleware
 {
-    public const PARAMETER_API_KEY = 'token';
     public const ALIAS = 'token_auth';
 
     public function handle(Request $request, callable $next)
     {
-        if (UsersToken::whereToken($request->get(self::PARAMETER_API_KEY))->get()->isEmpty()) {
+        if (UsersToken::whereToken($request->bearerToken())->get()->isEmpty()) {
             throw new ApiException(trans('nkf.heroes::validation.errors.invalid_token'));
         }
         return parent::handle($request, $next);
