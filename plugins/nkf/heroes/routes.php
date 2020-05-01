@@ -15,6 +15,7 @@ Route::group(['prefix' => 'api', 'middleware' => ApiKey::ALIAS], function () {
     Route::group(['middleware' => TokenAuthenticate::ALIAS], function () {
         Route::get('games', GameController::class . '@games');
         Route::get('test', TestController::class . '@test');
+        Route::get('/user/logout', UserController::class . '@logout');
 
         Route::get('heroes', HeroController::class . '@heroesUser');
         Route::group(['prefix' => 'hero'], function () {
