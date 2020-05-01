@@ -2,6 +2,7 @@
 
 namespace Nkf\Heroes\Api\Controllers;
 
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Nkf\Heroes\Api\ApiException;
 use Nkf\Heroes\Classes\Api\ApiController;
@@ -41,5 +42,16 @@ class UserController extends ApiController
         }
 
         return $this->responseJson(['token' => UsersToken::generateToken($user->id)]);
+    }
+
+    public function logout(): JsonResponse
+    {
+        $token = $this->getToken();
+        try {
+            UsersToken::whereToken($token)->first()->delete();
+        } catch (Exception $e) {
+            throw new ApiException($e->getMessage());
+        }
+        return $this->responseJson(['is_logout' => true]);
     }
 }
