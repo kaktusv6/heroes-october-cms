@@ -3,17 +3,32 @@
 namespace Nkf\Heroes;
 
 use Nkf\Heroes\Classes\Formatter;
+use Nkf\Heroes\Models\CharacteristicsHero;
 use Nkf\Heroes\Models\Hero;
 
-class HeroFormatter extends Formatter
+class CharacteristicsHeroFormatter extends Formatter
 {
     public function __construct()
     {
-        $this->setFormatter(function (Hero $hero) {
+        $this->setFormatter(function (CharacteristicsHero $characteristicsHero) {
+            return [
+                'name' => $characteristicsHero->characteristicData->title,
+                'value' => $characteristicsHero->value,
+                'range' => $characteristicsHero->characteristicData->range,
+            ];
+        });
+    }
+}
+
+class HeroFormatter extends Formatter
+{
+    public function __construct(CharacteristicsHeroFormatter $characteristicsHeroFormatter)
+    {
+        $this->setFormatter(function (Hero $hero) use ($characteristicsHeroFormatter) {
             return [
                 'name' => $hero->name,
                 'homeWorld' => $hero->homeWorld->title,
-                'characteristics' => $hero->characteristics_data
+                'characteristics' => $characteristicsHeroFormatter->formatList($hero->characteristics),
             ];
         });
     }
