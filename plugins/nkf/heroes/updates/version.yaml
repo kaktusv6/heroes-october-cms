@@ -30,3 +30,6 @@
 1.1.1:
     - 'Update properties heroes'
     - 2020_04_05_0549_update_properties_heroes.php
+1.1.2:
+    - 'Cascade characteristics heroes'
+    - 2020_04_06_0529_cascade_characteristics_heroes.php
