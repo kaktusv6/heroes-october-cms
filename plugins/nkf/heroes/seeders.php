@@ -154,10 +154,15 @@ class FixtureSeeder extends Seeder
         }
 
         $users = [];
-        for ($i = random_int(3, 5); $i-- > 0;) {
+        foreach ([
+                    [
+                        'login' => 'test',
+                        'password' => 'testtest',
+                    ]
+                 ] as $userData) {
             $user = new User;
-            $user->login = $this->username();
-            $user->password = $this->faker->password(6, 16);
+            $user->login = $userData['login'];
+            $user->password = $userData['password'];
             $user->save();
             $users[] = $user->id;
         }
