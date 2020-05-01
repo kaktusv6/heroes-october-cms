@@ -21,6 +21,7 @@ Route::group(['prefix' => 'api', 'middleware' => ApiKey::ALIAS], function () {
         Route::group(['prefix' => 'hero'], function () {
             Route::get('update', HeroController::class . '@update');
             Route::get('update/characteristics', HeroController::class . '@updateCharacteristics');
+            Route::get('remove', HeroController::class . '@remove');
         });
     });
 });
