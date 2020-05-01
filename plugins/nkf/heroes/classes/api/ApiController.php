@@ -42,7 +42,8 @@ abstract class ApiController
         return $this->responseJson($formatter->format($data));
     }
 
-    public function getToken(): ?string {
-        return request()->get('token');
+    public function getToken(): ?string
+    {
+        return request()->bearerToken();
     }
 }
