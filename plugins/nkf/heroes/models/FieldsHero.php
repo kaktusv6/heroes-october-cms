@@ -22,10 +22,11 @@ use Nkf\Heroes\Classes\Traits\SaveValueRelationship;
  */
 class FieldsHero extends Model
 {
-    public $timestamps = false;
-    public $table = 'nkf_heroes_field_heroes';
     use SaveValueRelationship;
 
+    public $timestamps = false;
+    public $incrementing = false;
+    public $table = 'nkf_heroes_fields_heroes';
     public $belongsTo = [
         'hero' => Hero::class,
         'field' => Field::class,
