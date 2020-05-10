@@ -21,6 +21,7 @@ Route::group(['prefix' => 'api', 'middleware' => ApiKey::ALIAS], function () {
         Route::group(['prefix' => 'hero'], function () {
             Route::post('/', HeroController::class . '@hero');
             Route::put('/characteristic/update', HeroController::class . '@updateCharacteristic');
+            Route::put('/field/update', HeroController::class . '@updateField');
             // TODO: Develop new routes for update data hero
             Route::delete('remove', HeroController::class . '@remove');
         });

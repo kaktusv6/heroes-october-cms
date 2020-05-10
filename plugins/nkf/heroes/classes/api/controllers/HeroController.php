@@ -38,6 +38,12 @@ class HeroController extends ApiController
         'value' => 'required|numeric',
     ];
 
+    const RULES_FIELD = [
+        'hero_id' => 'required|numeric',
+        'code' => 'required',
+        'value' => 'required',
+    ];
+
     protected function checkHeroUser(Hero $hero): void
     {
         if ($hero->user_id !== $this->getUserIdByToken()) {
@@ -106,6 +112,19 @@ class HeroController extends ApiController
         $characteristicValue->value = (int)$data['value'];
         $characteristicValue->save();
         return $this->responseFormatData($characteristicValue, $formatter);
+    }
+
+    public function updateField(FieldHeroFormatter $formatter): JsonResponse
+    {
+        $data = $this->getValidateJsonData(self::RULES_FIELD);
+        $hero = Hero::find($data['hero_id']);
+        $this->checkHeroUser($hero);
+        $field = Field::whereCode($data['code'])->first();
+        /** @var FieldsHero $fieldValue */
+        $fieldValue = $hero->fields()->whereFieldId($field->id)->first();
+        $fieldValue->value = $data['value'];
+        $fieldValue->save();
+        return $this->responseFormatData($fieldValue, $formatter);
     }
 
     public function remove(): JsonResponse
