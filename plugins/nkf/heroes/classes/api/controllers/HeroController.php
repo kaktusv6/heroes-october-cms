@@ -46,6 +46,15 @@ class HeroController extends ApiController
         );
     }
 
+    public function hero(HeroFormatter $heroFormatter): JsonResponse
+    {
+        $data = $this->getValidateJsonData(self::RULES_HERO);
+        return $this->responseFormatData(
+            UsersToken::whereToken($this->getToken())->first()->user->heroes()->whereId($data['hero_id'])->first(),
+            $heroFormatter
+        );
+    }
+
     public function update(HeroFormatter $heroFormatter): JsonResponse
     {
         $userIdByToken = UsersToken::whereToken($this->getToken())->first()->user_id;
