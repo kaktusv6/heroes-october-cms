@@ -217,7 +217,7 @@ class FixtureSeeder extends Seeder
             $hero->name = $this->faker->text(5);
             $hero->game_id = $this->faker->randomElement($games);
             $hero->user_id = $this->faker->randomElement($users);
-            $homeWorlds = $hero->game->homeWorlds->map(function (HomeWorld $world) {
+            $homeWorlds = $hero->game->home_worlds->map(function (HomeWorld $world) {
                 return $world->id;
             });
             $hero->home_world_id = $this->faker->randomElement($homeWorlds);
