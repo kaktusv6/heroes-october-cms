@@ -20,6 +20,7 @@ Route::group(['prefix' => 'api', 'middleware' => ApiKey::ALIAS], function () {
         Route::get('heroes', HeroController::class . '@heroesUser');
         Route::group(['prefix' => 'hero'], function () {
             Route::post('/', HeroController::class . '@hero');
+            Route::put('/characteristic/update', HeroController::class . '@updateCharacteristic');
             // TODO: Develop new routes for update data hero
             Route::delete('remove', HeroController::class . '@remove');
         });

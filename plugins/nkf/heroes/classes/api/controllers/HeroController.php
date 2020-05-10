@@ -32,6 +32,12 @@ class HeroController extends ApiController
 
     const RULES_HERO = ['hero_id' => 'required|numeric|min:1'];
 
+    const RULES_CHARACTERISTIC = [
+        'hero_id' => 'required|numeric',
+        'code' => 'required',
+        'value' => 'required|numeric',
+    ];
+
     protected function checkHeroUser(Hero $hero): void
     {
         if ($hero->user_id !== $this->getUserIdByToken()) {
@@ -87,6 +93,19 @@ class HeroController extends ApiController
             $characteristicHero->save();
         }
         return $this->responseFormatData($hero, $heroFormatter);
+    }
+
+    public function updateCharacteristic(CharacteristicsHeroFormatter $formatter): JsonResponse
+    {
+        $data = $this->getValidateJsonData(self::RULES_CHARACTERISTIC);
+        $hero = Hero::find($data['hero_id']);
+        $this->checkHeroUser($hero);
+        $characteristic = Characteristic::whereSlug($data['code'])->first();
+        /** @var CharacteristicsHero $characteristicValue */
+        $characteristicValue = $hero->characteristics()->whereCharacteristicId($characteristic->id)->first();
+        $characteristicValue->value = (int)$data['value'];
+        $characteristicValue->save();
+        return $this->responseFormatData($characteristicValue, $formatter);
     }
 
     public function remove(): JsonResponse
