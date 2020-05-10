@@ -42,7 +42,7 @@ class InitalSeeder extends Seeder
 {
     public function run(): void
     {
-        // TODO seeder data from json files. In json files main data D&D and Warhammer 40k
+        // TODO
     }
 }
 
