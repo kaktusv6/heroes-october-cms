@@ -3,7 +3,6 @@
 namespace Nkf\Heroes\Api\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Nkf\Heroes\Api\ApiException;
 use Nkf\Heroes\Classes\Api\ApiController;
 use Nkf\Heroes\HeroFormatter;
@@ -33,7 +32,7 @@ class HeroController extends ApiController
 
     const RULES_HERO = ['hero_id' => 'required|numeric|min:1'];
 
-    public function heroesUser(Request $request, HeroFormatter $heroFormatter): JsonResponse
+    public function heroesUser(HeroFormatter $heroFormatter): JsonResponse
     {
         $data = $this->getValidateJsonData(self::RULES_HEROES_USER);
         return $this->responseFormatList(
@@ -47,7 +46,7 @@ class HeroController extends ApiController
         );
     }
 
-    public function update(Request $request, HeroFormatter $heroFormatter): JsonResponse
+    public function update(HeroFormatter $heroFormatter): JsonResponse
     {
         $userIdByToken = UsersToken::whereToken($this->getToken())->first()->user_id;
         $data = $this->getValidateJsonData(self::RULES_UPDATE);
@@ -62,7 +61,7 @@ class HeroController extends ApiController
         return $this->responseFormatData($hero, $heroFormatter);
     }
 
-    public function updateCharacteristics(Request $request, HeroFormatter $heroFormatter): JsonResponse
+    public function updateCharacteristics(HeroFormatter $heroFormatter): JsonResponse
     {
         $userIdByToken = UsersToken::whereToken($this->getToken())->first()->user_id;
         $data = $this->getValidateJsonData(self::RULES_UPDATE_CHARACTERISTICS);
