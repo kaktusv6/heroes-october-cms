@@ -2,9 +2,9 @@
 
 namespace Nkf\Heroes\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use \October\Rain\Database\Traits\Validation;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Model;
+use October\Rain\Database\Traits\Validation;
 
 /**
  * Model
@@ -27,10 +27,9 @@ use Model;
 class Characteristic extends Model
 {
     use Validation;
+
     public $timestamps = false;
-
     public $table = 'nkf_heroes_characteristics';
-
     public $rules = [
         'title' => 'required',
         'range' => 'required',
