@@ -27,7 +27,7 @@ class BuilderTableCreateFieldsForHeroes extends Migration
             $table->primary(['field_id', 'game_id'], 'nkf_heroes_fields_games_primary');
         });
 
-        Schema::create('nkf_heroes_field_heroes', function (Blueprint $table) : void {
+        Schema::create('nkf_heroes_fields_heroes', function (Blueprint $table) : void {
             $table->unsignedInteger('field_id');
             $table->unsignedInteger('hero_id');
             $table->text('value')->nullable();
@@ -39,7 +39,7 @@ class BuilderTableCreateFieldsForHeroes extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('nkf_heroes_field_heroes');
+        Schema::dropIfExists('nkf_heroes_fields_heroes');
         Schema::dropIfExists('nkf_heroes_fields_games');
         Schema::dropIfExists('nkf_heroes_fields');
     }
