@@ -8,6 +8,9 @@ fields:
         nameFrom: title
         descriptionFrom: description
         span: right
+        readOnly: 1
+        hidden: 0
+        required: 0
         type: relation
     characteristics_data:
         label: 'nkf.heroes::lang.settings.characteristics'
@@ -34,7 +37,7 @@ fields:
         prompt: 'Добавить поле'
         span: auto
         disabled: 1
-        readOnly: 0
+        readOnly: 1
         hidden: 0
         type: repeater
         form:

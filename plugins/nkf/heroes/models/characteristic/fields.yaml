@@ -1,7 +1,14 @@
 fields:
     title:
         label: 'nkf.heroes::lang.settings.title'
-        span: auto
+        span: left
+        type: text
+    slug:
+        label: 'nkf.heroes::lang.settings.code'
+        span: right
+        preset:
+            field: title
+            type: slug
         type: text
     description:
         label: 'nkf.heroes::lang.settings.description'
