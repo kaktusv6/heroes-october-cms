@@ -22,6 +22,10 @@ navigation:
                 label: 'nkf.heroes::lang.settings.characteristics'
                 url: nkf/heroes/characteristics
                 icon: icon-sliders
+            fields:
+                label: 'nkf.heroes::lang.settings.fields'
+                url: nkf/heroes/fields
+                icon: icon-address-card-o
             heroes:
                 label: 'nkf.heroes::lang.settings.heroes'
                 url: nkf/heroes/heroes

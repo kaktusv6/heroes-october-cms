@@ -26,6 +26,8 @@ use October\Rain\Database\Traits\Validation;
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Hero whereHomeWorldId($value)
  * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\Characteristic[] $characteristics
  * @property-read mixed $characteristics_data
+ * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\FieldsHero[] $fields
+ * @property-read mixed $fields_data
  */
 class Hero extends Model
 {
@@ -37,15 +39,10 @@ class Hero extends Model
         'name' => 'required',
         'game_id' => 'required|min:1',
     ];
-
     public $hasMany = [
         'characteristics' => CharacteristicsHero::class,
+        'fields' => FieldsHero::class,
     ];
-
-    public function characteristics(): HasMany
-    {
-        return $this->hasMany(CharacteristicsHero::class);
-    }
 
     public $belongsTo = [
         'game' => Game::class,
@@ -68,12 +65,33 @@ class Hero extends Model
         return $this->belongsTo(HomeWorld::class);
     }
 
+    public function characteristics(): HasMany
+    {
+        return $this->hasMany(CharacteristicsHero::class);
+    }
+
+    public function fields(): HasMany
+    {
+        return $this->hasMany(FieldsHero::class);
+    }
+
     public function getCharacteristicsDataAttribute(): array
     {
         return $this->characteristics->map(function (CharacteristicsHero $characteristic) {
             return [
                 'name' => $characteristic->characteristicData->title,
                 'value' => $characteristic->value,
+            ];
+        })->toArray();
+    }
+
+    public function getFieldsDataAttribute(): array
+    {
+        return $this->fields->map(function (FieldsHero $field) {
+            return [
+                'name' => $field->field->name,
+                'type' => $field->field->type,
+                'value' => $field->value,
             ];
         })->toArray();
     }

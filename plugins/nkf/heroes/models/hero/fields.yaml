@@ -3,15 +3,21 @@ fields:
         label: 'nkf.heroes::lang.settings.name'
         span: auto
         type: text
+    game:
+        label: 'nkf.heroes::lang.settings.game'
+        nameFrom: title
+        descriptionFrom: description
+        span: right
+        type: relation
     characteristics_data:
         label: 'nkf.heroes::lang.settings.characteristics'
         prompt: 'Добавить характеристику'
-        span: auto
+        span: left
+        disabled: 1
         readOnly: 1
         context:
             - update
             - preview
-        disabled: 1
         type: repeater
         form:
             fields:
@@ -23,9 +29,21 @@ fields:
                     label: 'nkf.heroes::lang.settings.value'
                     span: auto
                     type: text
-    game:
-        label: 'nkf.heroes::lang.settings.game'
-        nameFrom: title
-        descriptionFrom: description
-        span: left
-        type: relation
+    fields_data:
+        label: 'nkf.heroes::lang.settings.fields'
+        prompt: 'Добавить поле'
+        span: auto
+        disabled: 1
+        readOnly: 0
+        hidden: 0
+        type: repeater
+        form:
+            fields:
+                name:
+                    label: 'nkf.heroes::lang.settings.name'
+                    span: auto
+                    type: text
+                value:
+                    label: 'nkf.heroes::lang.settings.value'
+                    span: auto
+                    type: text

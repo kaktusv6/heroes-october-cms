@@ -1,0 +1,14 @@
+columns:
+    sort_order:
+        label: reorde
+        type: number
+        sortable: true
+        width: 20px
+    name:
+        label: 'nkf.heroes::lang.settings.name'
+        type: text
+        searchable: true
+    type:
+        label: 'nkf.heroes::lang.settings.type_value'
+        type: text
+        searchable: true

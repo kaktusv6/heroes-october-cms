@@ -1,0 +1,20 @@
+fields:
+    name:
+        label: 'nkf.heroes::lang.settings.name'
+        span: auto
+        type: text
+    code:
+        label: 'nkf.heroes::lang.settings.code'
+        span: auto
+        type: text
+    type:
+        label: 'nkf.heroes::lang.settings.type_value'
+        showSearch: true
+        span: auto
+        type: dropdown
+    games:
+        label: 'nkf.heroes::lang.settings.games'
+        nameFrom: title
+        descriptionFrom: description
+        span: auto
+        type: relation

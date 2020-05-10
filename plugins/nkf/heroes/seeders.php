@@ -2,6 +2,8 @@
 
 use Nkf\Heroes\Models\ApiKey;
 use Nkf\Heroes\Models\CharacteristicsHero;
+use Nkf\Heroes\Models\Field;
+use Nkf\Heroes\Models\FieldsHero;
 use Nkf\Heroes\Models\HomeWorld;
 use Nkf\Heroes\Models\User;
 use Faker\Factory;
@@ -151,14 +153,55 @@ class FixtureSeeder extends Seeder
                 $world->save();
                 $world->games()->sync($gameId);
             }
+
+            foreach ([
+                         [
+                             'name' => 'Рост',
+                             'type' => 'int',
+                         ],
+                         [
+                             'name' => 'Вес',
+                             'type' => 'int',
+                         ],
+                         [
+                             'name' => 'Прошлое',
+                             'type' => 'string',
+                         ],
+                         [
+                             'name' => 'Очки судьбы',
+                             'type' => 'int',
+                         ],
+                         [
+                             'name' => 'Возраст',
+                             'type' => 'int',
+                         ],
+                         [
+                             'name' => 'Пол',
+                             'type' => 'string',
+                         ],
+                         [
+                             'name' => 'Телосложение',
+                             'type' => 'string',
+                         ],
+                         [
+                             'name' => 'Деньги (Троны)',
+                             'type' => 'int',
+                         ],
+                     ] as $item) {
+                $field = new Field;
+                $field->name = $item['name'];
+                $field->type = $item['type'];
+                $field->save();
+                $field->games()->sync($gameId);
+            }
         }
 
         $users = [];
         foreach ([
-                    [
-                        'login' => 'test',
-                        'password' => 'testtest',
-                    ]
+                     [
+                         'login' => 'test',
+                         'password' => 'testtest',
+                     ]
                  ] as $userData) {
             $user = new User;
             $user->login = $userData['login'];
@@ -186,6 +229,23 @@ class FixtureSeeder extends Seeder
                 $characteristicHero->characteristic_id = $characteristic->id;
                 $characteristicHero->value = random_int(20, 40);
                 $characteristicHero->save();
+            }
+
+            foreach ($hero->game->fields as $field) {
+                $fieldHero = new FieldsHero;
+                $fieldHero->field_id = $field->id;
+                $fieldHero->hero_id = $hero->id;
+                $value = null;
+                switch ($field->type) {
+                    case 'int':
+                        $value = random_int(10, 20);
+                        break;
+                    case 'string':
+                        $value = $this->faker->text(10);
+                        break;
+                }
+                $fieldHero->value = $value;
+                $fieldHero->save();
             }
         }
     }

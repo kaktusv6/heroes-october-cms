@@ -2,7 +2,7 @@
 
 namespace Nkf\Heroes\Models;
 
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Model;
 use October\Rain\Database\Traits\Validation;
 
@@ -18,6 +18,7 @@ use October\Rain\Database\Traits\Validation;
  * @mixin \Eloquent
  * @property string|null $properties
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Game whereProperties($value)
+ * @property-read \Nkf\Heroes\Models\Field $fields
  */
 class Game extends Model
 {
@@ -28,9 +29,16 @@ class Game extends Model
     public $rules = [
         'title' => 'required|max:255',
     ];
-
     public $morphedByMany = [
         'characteristics' => [Characteristic::class, 'table' => 'nkf_heroes_properties_games', 'name' => 'property'],
         'homeWorlds' => [HomeWorld::class, 'table' => 'nkf_heroes_properties_games', 'name' => 'property'],
     ];
+    public $belongsToMany = [
+        'fields' => Field::class,
+    ];
+
+    public function fields(): belongsToMany
+    {
+        return $this->belongsToMany(Field::class, 'nkf_heroes_fields_games');
+    }
 }

@@ -1,0 +1,5 @@
+title: 'nkf.content::lang.controllers.reorder'
+modelClass: Nkf\Heroes\Models\Field
+nameFrom: name
+toolbar:
+    buttons: reorder_toolbar
