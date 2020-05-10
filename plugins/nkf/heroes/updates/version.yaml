@@ -39,3 +39,6 @@
 1.1.4:
     - 'Removed polymorphed relation characteristics and games'
     - 2020_05_10_0408_removed_polymorphed_relation_characteristics_and_games.php
+1.1.5:
+    - 'Rename characteristics heroes'
+    - 2020_05_10_0443_rename_characteristics_heroes.php
