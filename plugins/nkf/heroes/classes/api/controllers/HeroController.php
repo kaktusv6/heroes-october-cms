@@ -35,10 +35,14 @@ class HeroController extends ApiController
 
     public function heroesUser(Request $request, HeroFormatter $heroFormatter): JsonResponse
     {
-        $token = $this->getToken();
         $data = $this->getValidateJsonData(self::RULES_HEROES_USER);
         return $this->responseFormatList(
-            UsersToken::whereToken($token)->first()->user->heroes()->whereGameId($data['game_id'])->get(),
+            UsersToken::whereToken($token = $this->getToken())
+                ->first()
+                ->user
+                ->heroes()
+                ->whereGameId($data['game_id'])
+                ->first(),
             $heroFormatter
         );
     }
