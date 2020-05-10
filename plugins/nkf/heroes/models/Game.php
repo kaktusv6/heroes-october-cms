@@ -16,9 +16,9 @@ use October\Rain\Database\Traits\Validation;
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Game whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Game whereTitle($value)
  * @mixin \Eloquent
- * @property string|null $properties
- * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Game whereProperties($value)
  * @property-read \Nkf\Heroes\Models\Field $fields
+ * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\Characteristic[] $characteristics
+ * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\HomeWorld[] $home_worlds
  */
 class Game extends Model
 {

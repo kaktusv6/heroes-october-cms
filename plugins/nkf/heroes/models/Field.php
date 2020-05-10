@@ -26,6 +26,8 @@ use October\Rain\Database\Traits\Validation;
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Field whereType($value)
  * @mixin \Eloquent
  * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\Game[] $games
+ * @property string|null $description
+ * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Field whereDescription($value)
  */
 class Field extends Model
 {

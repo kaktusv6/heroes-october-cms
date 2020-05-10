@@ -23,6 +23,7 @@ use October\Rain\Database\Traits\Validation;
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Characteristic whereRangeGenerator($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Characteristic whereTitle($value)
  * @mixin \Eloquent
+ * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\Game[] $games
  */
 class Characteristic extends Model
 {
