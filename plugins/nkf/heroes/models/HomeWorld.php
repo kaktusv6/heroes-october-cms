@@ -2,6 +2,7 @@
 
 namespace Nkf\Heroes\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Model;
 use October\Rain\Database\Traits\Validation;
 
@@ -21,6 +22,12 @@ class HomeWorld extends Model
     public $timestamps = false;
     public $table = 'nkf_heroes_home_worlds';
     public $rules = ['title' => 'required'];
+    public $belongsToMany = [
+        'games' => Game::class
+    ];
 
-    public $morphToMany = ['games' => [Game::class, 'table' => 'nkf_heroes_properties_games', 'name' => 'property']];
+    public function games(): BelongsToMany
+    {
+        return $this->belongsToMany(Game::class, 'nkf_heroes_home_worlds_games');
+    }
 }
