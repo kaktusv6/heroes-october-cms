@@ -1,11 +1,20 @@
 #!/bin/bash
 set -e
 export $(egrep -v '^#' .env-dev | xargs)
+IP_LOCAL=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
 
 start() {
-    nohup php artisan serve --host ${ARTISAN_HOST} --port=${ARTISAN_SERVER_PORT} > ./dev-server.log 2>&1 &
-    echo "development PHP web server started http://${ARTISAN_HOST}:${ARTISAN_SERVER_PORT}"
-    echo "Dashboard started http://${ARTISAN_HOST}:${ARTISAN_SERVER_PORT}/backend"
+    nohup php artisan serve --port=${ARTISAN_SERVER_PORT} > ./dev-server.log 2>&1 &
+    echo "development PHP web server started http://localhost:${ARTISAN_SERVER_PORT}"
+    echo "Dashboard started http://localhost:${ARTISAN_SERVER_PORT}/backend"
+    echo "log: dev-server.log"
+    exit 0
+}
+
+startLocal() {
+    nohup php artisan serve --host ${IP_LOCAL} --port=${ARTISAN_SERVER_PORT} > ./dev-server.log 2>&1 &
+    echo "development PHP web server started http://${IP_LOCAL}:${ARTISAN_SERVER_PORT}"
+    echo "Dashboard started http://${IP_LOCAL}:${ARTISAN_SERVER_PORT}/backend"
     echo "log: dev-server.log"
     exit 0
 }
@@ -13,7 +22,6 @@ start() {
 stop() {
     kill $(lsof -t -i:${ARTISAN_SERVER_PORT})
     echo "development PHP web server on port ${ARTISAN_SERVER_PORT} is stopped"
-    exit 0
 }
 
 error_option() {
@@ -31,6 +39,8 @@ if [[ "$@" = *"stop"* ]]; then
     stop
 elif [[ "$@" = *"start"* ]]; then
     start
+elif [[ "$@" = *"local"* ]]; then
+    startLocal
 elif [[ "$@" = "" ]]; then
     start
 else
