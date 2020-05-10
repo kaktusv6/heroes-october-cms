@@ -14,6 +14,7 @@ use October\Rain\Database\Traits\Validation;
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\HomeWorld whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\HomeWorld whereTitle($value)
  * @mixin \Eloquent
+ * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\Game[] $games
  */
 class HomeWorld extends Model
 {

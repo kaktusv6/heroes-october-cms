@@ -24,7 +24,7 @@ use October\Rain\Database\Traits\Validation;
  * @property int|null $home_world_id
  * @property-read \Nkf\Heroes\Models\HomeWorld|null $homeWorld
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Hero whereHomeWorldId($value)
- * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\Characteristic[] $characteristics
+ * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\CharacteristicsHero[] $characteristics
  * @property-read mixed $characteristics_data
  * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\FieldsHero[] $fields
  * @property-read mixed $fields_data
