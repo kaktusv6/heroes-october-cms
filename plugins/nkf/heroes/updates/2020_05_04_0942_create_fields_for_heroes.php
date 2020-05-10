@@ -22,7 +22,7 @@ class BuilderTableCreateFieldsForHeroes extends Migration
             $table->unsignedInteger('field_id');
             $table->unsignedInteger('game_id');
 
-            $table->foreign('field_id')->on('nkf_heroes_fields')->references('id');
+            $table->foreign('field_id')->on('nkf_heroes_fields')->references('id')->onDelete('cascade');
             $table->foreign('game_id')->on('nkf_heroes_games')->references('id');
             $table->primary(['field_id', 'game_id'], 'nkf_heroes_fields_games_primary');
         });
@@ -32,7 +32,7 @@ class BuilderTableCreateFieldsForHeroes extends Migration
             $table->unsignedInteger('hero_id');
             $table->text('value')->nullable();
 
-            $table->foreign('field_id')->on('nkf_heroes_fields')->references('id');
+            $table->foreign('field_id')->on('nkf_heroes_fields')->references('id')->onDelete('cascade');
             $table->foreign('hero_id')->on('nkf_heroes_heroes')->references('id')->onDelete('cascade');
             $table->primary(['field_id', 'hero_id'], 'nkf_heroes_fields_heroes_primary');
         });
