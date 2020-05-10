@@ -22,8 +22,10 @@ class BuilderTableUpdatePropertiesHeroes extends Migration
     public function down()
     {
         Schema::table('nkf_heroes_properties_heroes', function (Blueprint $table) : void {
-            $table->dropPrimary(['hero_id', 'characteristic_id']);
             $table->dropForeign(['characteristic_id']);
+            $table->dropIndex('nkf_heroes_properties_heroes_characteristic_id_foreign');
+            $table->dropForeign(['hero_id']);
+            $table->dropPrimary();
             $table->text('value')->change();
             $table->renameColumn('characteristic_id', 'property_id')->change();
             $table->text('property_type');
