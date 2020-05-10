@@ -29,16 +29,24 @@ class Game extends Model
     public $rules = [
         'title' => 'required|max:255',
     ];
-    public $morphedByMany = [
-        'characteristics' => [Characteristic::class, 'table' => 'nkf_heroes_properties_games', 'name' => 'property'],
-        'homeWorlds' => [HomeWorld::class, 'table' => 'nkf_heroes_properties_games', 'name' => 'property'],
-    ];
     public $belongsToMany = [
         'fields' => Field::class,
+        'characteristics' => Characteristic::class,
+        'home_worlds' => HomeWorld::class,
     ];
 
-    public function fields(): belongsToMany
+    public function fields(): BelongsToMany
     {
         return $this->belongsToMany(Field::class, 'nkf_heroes_fields_games');
+    }
+
+    public function characteristics(): BelongsToMany
+    {
+        return $this->belongsToMany(Characteristic::class, 'nkf_heroes_characteristics_games');
+    }
+
+    public function home_worlds(): BelongsToMany
+    {
+        return $this->belongsToMany(HomeWorld::class, 'nkf_heroes_home_worlds_games');
     }
 }
