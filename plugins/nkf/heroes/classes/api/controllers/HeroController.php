@@ -54,8 +54,8 @@ class HeroController extends ApiController
         if ($hero->user_id !== $userIdByToken) {
             throw new ApiException(trans('nkf.heroes::validation.errors.hero_not_belong_user'));
         }
-        foreach ($data['fields'] as $field) {
-            $hero->{$field['name']} = $field['value'];
+        foreach ($data['properties'] as $property) {
+            $hero->{$property['name']} = $property['value'];
         }
         $hero->save();
         return $this->responseFormatData($hero, $heroFormatter);
