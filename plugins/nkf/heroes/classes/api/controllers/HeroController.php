@@ -4,9 +4,14 @@ namespace Nkf\Heroes\Api\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Nkf\Heroes\Api\ApiException;
+use Nkf\Heroes\CharacteristicsHeroFormatter;
 use Nkf\Heroes\Classes\Api\ApiController;
+use Nkf\Heroes\FieldHeroFormatter;
 use Nkf\Heroes\HeroFormatter;
+use Nkf\Heroes\Models\Characteristic;
 use Nkf\Heroes\Models\CharacteristicsHero;
+use Nkf\Heroes\Models\Field;
+use Nkf\Heroes\Models\FieldsHero;
 use Nkf\Heroes\Models\Hero;
 use Nkf\Heroes\Models\UsersToken;
 
