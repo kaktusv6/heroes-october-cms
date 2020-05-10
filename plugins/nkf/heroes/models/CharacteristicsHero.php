@@ -24,7 +24,6 @@ class CharacteristicsHero extends Model
     public $incrementing = false;
     protected $primaryKey = ['hero_id', 'characteristic_id'];
     public $table = 'nkf_heroes_properties_heroes';
-
     public $belongsTo = [
         'characteristicData' => Characteristic::class,
     ];
