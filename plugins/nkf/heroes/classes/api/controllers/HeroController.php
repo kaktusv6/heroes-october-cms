@@ -32,6 +32,13 @@ class HeroController extends ApiController
 
     const RULES_HERO = ['hero_id' => 'required|numeric|min:1'];
 
+    protected function checkHeroUser(Hero $hero): void
+    {
+        if ($hero->user_id !== $this->getUserIdByToken()) {
+            throw new ApiException(trans('nkf.heroes::validation.errors.hero_not_belong_user'));
+        }
+    }
+
     public function heroesUser(HeroFormatter $heroFormatter): JsonResponse
     {
         $data = $this->getValidateJsonData(self::RULES_HEROES_USER);
@@ -60,9 +67,7 @@ class HeroController extends ApiController
         $userIdByToken = UsersToken::whereToken($this->getToken())->first()->user_id;
         $data = $this->getValidateJsonData(self::RULES_UPDATE);
         $hero = Hero::find($data['hero_id']);
-        if ($hero->user_id !== $userIdByToken) {
-            throw new ApiException(trans('nkf.heroes::validation.errors.hero_not_belong_user'));
-        }
+        $this->checkHeroUser($hero);
         foreach ($data['properties'] as $property) {
             $hero->{$property['name']} = $property['value'];
         }
@@ -74,9 +79,7 @@ class HeroController extends ApiController
     {
         $data = $this->getValidateJsonData(self::RULES_UPDATE_CHARACTERISTICS);
         $hero = Hero::find($data['hero_id']);
-        if ($hero->user_id !== $this->getUserIdByToken()) {
-            throw new ApiException(trans('nkf.heroes::validation.errors.hero_not_belong_user'));
-        }
+        $this->checkHeroUser($hero);
         foreach ($data['characteristics'] as $characteristic) {
             /** @var CharacteristicsHero $characteristicHero */
             $characteristicHero = $hero->characteristics()->whereCharacteristicId($characteristic['id'])->first();
@@ -91,9 +94,7 @@ class HeroController extends ApiController
         $userIdByToken = UsersToken::whereToken($this->getToken())->first()->user_id;
         $data = $this->getValidateJsonData(self::RULES_HERO);
         $hero = Hero::find($data['hero_id']);
-        if ($hero->user_id !== $userIdByToken) {
-            throw new ApiException(trans('nkf.heroes::validation.errors.hero_not_belong_user'));
-        }
+        $this->checkHeroUser($hero);
         return $this->responseJson(['is_remove' => $hero->delete()]);
     }
 }
