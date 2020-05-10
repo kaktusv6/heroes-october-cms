@@ -4,6 +4,7 @@ namespace Nkf\Heroes\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Model;
+use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Validation;
 
 /**
@@ -24,18 +25,22 @@ use October\Rain\Database\Traits\Validation;
  * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Characteristic whereTitle($value)
  * @mixin \Eloquent
  * @property-read \October\Rain\Database\Collection|\Nkf\Heroes\Models\Game[] $games
+ * @property string $slug
+ * @method static \Illuminate\Database\Eloquent\Builder|\Nkf\Heroes\Models\Characteristic whereSlug($value)
  */
 class Characteristic extends Model
 {
     use Validation;
+    use Sluggable;
 
     public $timestamps = false;
     public $table = 'nkf_heroes_characteristics';
     public $rules = [
-        'title' => 'required',
+        'title' => 'required|max:191',
         'range' => 'required',
         'range_generator' => 'required',
     ];
+    public $slugs = ['slug' => 'title'];
     public $jsonable = [
         'range',
         'range_generator',

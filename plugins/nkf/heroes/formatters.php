@@ -14,6 +14,7 @@ class CharacteristicsHeroFormatter extends Formatter
         $this->setFormatter(function (CharacteristicsHero $characteristicsHero) {
             return [
                 'name' => $characteristicsHero->characteristicData->title,
+                'code' => $characteristicsHero->characteristicData->slug,
                 'value' => $characteristicsHero->value,
                 'range' => $characteristicsHero->characteristicData->range,
             ];
