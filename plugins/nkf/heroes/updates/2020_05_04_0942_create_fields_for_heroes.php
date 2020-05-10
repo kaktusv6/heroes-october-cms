@@ -34,6 +34,7 @@ class BuilderTableCreateFieldsForHeroes extends Migration
 
             $table->foreign('field_id')->on('nkf_heroes_fields')->references('id');
             $table->foreign('hero_id')->on('nkf_heroes_heroes')->references('id')->onDelete('cascade');
+            $table->primary(['field_id', 'hero_id'], 'nkf_heroes_fields_heroes_primary');
         });
     }
 
