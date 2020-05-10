@@ -72,10 +72,9 @@ class HeroController extends ApiController
 
     public function updateCharacteristics(HeroFormatter $heroFormatter): JsonResponse
     {
-        $userIdByToken = UsersToken::whereToken($this->getToken())->first()->user_id;
         $data = $this->getValidateJsonData(self::RULES_UPDATE_CHARACTERISTICS);
         $hero = Hero::find($data['hero_id']);
-        if ($hero->user_id !== $userIdByToken) {
+        if ($hero->user_id !== $this->getUserIdByToken()) {
             throw new ApiException(trans('nkf.heroes::validation.errors.hero_not_belong_user'));
         }
         foreach ($data['characteristics'] as $characteristic) {
