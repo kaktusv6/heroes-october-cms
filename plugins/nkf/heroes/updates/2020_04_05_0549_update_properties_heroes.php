@@ -13,7 +13,11 @@ class BuilderTableUpdatePropertiesHeroes extends Migration
             $table->renameColumn('property_id', 'characteristic_id')->change();
             $table->unsignedInteger('value')->change();
 
-            $table->foreign('characteristic_id')->on('nkf_heroes_characteristics')->references('id');
+            $table
+                ->foreign('characteristic_id')
+                ->on('nkf_heroes_characteristics')
+                ->references('id')
+                ->onDelete('cascade');
 
             $table->primary(['hero_id', 'characteristic_id']);
         });
