@@ -40,14 +40,12 @@ class Characteristic extends Model
         'range',
         'range_generator',
     ];
-
-    public $belongsTo = ['game' => Game::class];
-    public function game(): BelongsTo
-    {
-        return $this->belongsTo(Game::class);
-    }
-
-    public $morphToMany = [
-        'games' => [Game::class, 'table' => 'nkf_heroes_properties_games', 'name' => 'property']
+    public $belongsToMany = [
+        'games' => Game::class,
     ];
+
+    public function games(): BelongsToMany
+    {
+        return $this->belongsToMany(Game::class, 'nkf_heroes_characteristics_games');
+    }
 }
