@@ -5,6 +5,8 @@ namespace Nkf\Heroes\Classes\Api;
 use Illuminate\Http\JsonResponse;
 use Nkf\Heroes\Api\ApiException;
 use Nkf\Heroes\Classes\Formatter;
+use Nkf\Heroes\Models\User;
+use Nkf\Heroes\Models\UsersToken;
 use Validator;
 
 abstract class ApiController
@@ -45,5 +47,15 @@ abstract class ApiController
     public function getToken(): ?string
     {
         return request()->bearerToken();
+    }
+
+    public function getUserByToken(): ?User
+    {
+        return UsersToken::whereToken($this->getToken())->first()->user;
+    }
+
+    public function getUserIdByToken(): ?int
+    {
+        return object_get($this->getUserByToken(), 'id');
     }
 }
