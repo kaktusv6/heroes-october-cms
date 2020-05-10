@@ -31,7 +31,7 @@ class HeroController extends ApiController
         'characteristics.*.value' => 'required|numeric',
     ];
 
-    const RULES_REMOVE = ['hero_id' => 'required|numeric|min:1'];
+    const RULES_HERO = ['hero_id' => 'required|numeric|min:1'];
 
     public function heroesUser(Request $request, HeroFormatter $heroFormatter): JsonResponse
     {
@@ -78,7 +78,7 @@ class HeroController extends ApiController
     public function remove(): JsonResponse
     {
         $userIdByToken = UsersToken::whereToken($this->getToken())->first()->user_id;
-        $data = $this->getValidateJsonData(self::RULES_REMOVE);
+        $data = $this->getValidateJsonData(self::RULES_HERO);
         $hero = Hero::find($data['hero_id']);
         if ($hero->user_id !== $userIdByToken) {
             throw new ApiException(trans('nkf.heroes::validation.errors.hero_not_belong_user'));
