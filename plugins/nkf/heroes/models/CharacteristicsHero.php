@@ -5,6 +5,7 @@ namespace Nkf\Heroes\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Model;
+use Nkf\Heroes\Classes\Traits\SaveValueRelationship;
 
 /**
  * CharacteristicsHero Model
@@ -20,6 +21,8 @@ use Model;
  */
 class CharacteristicsHero extends Model
 {
+    use SaveValueRelationship;
+
     public $timestamps = false;
     public $incrementing = false;
     protected $primaryKey = ['hero_id', 'characteristic_id'];
@@ -31,38 +34,5 @@ class CharacteristicsHero extends Model
     public function characteristicData(): BelongsTo
     {
         return $this->belongsTo(Characteristic::class, 'characteristic_id');
-    }
-
-    protected function setKeysForSaveQuery(Builder $query): Builder
-    {
-        $keys = $this->getKeyName();
-        if (!is_array($keys)) {
-            return parent::setKeysForSaveQuery($query);
-        }
-
-        foreach ($keys as $keyName) {
-            $query->where($keyName, '=', $this->getKeyForSaveQuery($keyName));
-        }
-
-        return $query;
-    }
-
-    /**
-     * Get the primary key value for a save query.
-     *
-     * @param null $keyName
-     * @return mixed
-     */
-    protected function getKeyForSaveQuery($keyName = null)
-    {
-        if ($keyName === null) {
-            $keyName = $this->getKeyName();
-        }
-
-        if (isset($this->original[$keyName])) {
-            return $this->original[$keyName];
-        }
-
-        return $this->getAttribute($keyName);
     }
 }

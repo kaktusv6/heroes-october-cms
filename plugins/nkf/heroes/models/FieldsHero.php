@@ -4,6 +4,7 @@ namespace Nkf\Heroes\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Model;
+use Nkf\Heroes\Classes\Traits\SaveValueRelationship;
 
 /**
  * FieldData Model
@@ -23,11 +24,14 @@ class FieldsHero extends Model
 {
     public $timestamps = false;
     public $table = 'nkf_heroes_field_heroes';
+    use SaveValueRelationship;
 
     public $belongsTo = [
         'hero' => Hero::class,
         'field' => Field::class,
     ];
+
+    protected $primaryKey = ['hero_id', 'field_id'];
 
     public function hero(): BelongsTo
     {
