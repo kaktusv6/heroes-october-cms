@@ -21,22 +21,14 @@ fields:
         descriptionFrom: description
         span: auto
         type: relation
-    range:
-        label: 'nkf.heroes::lang.settings.range'
-        prompt: 'Add new item'
-        maxItems: '1'
-        span: left
-        type: repeater
-        form:
-            fields:
-                min:
-                    label: 'nkf.heroes::lang.settings.min'
-                    span: auto
-                    type: number
-                max:
-                    label: 'nkf.heroes::lang.settings.max'
-                    span: auto
-                    type: number
+    'range[min]':
+        label: 'nkf.heroes::lang.settings.min'
+        span: auto
+        type: number
+    'range[max]':
+        label: 'nkf.heroes::lang.settings.max'
+        span: auto
+        type: number
     range_generator:
         label: 'nkf.heroes::lang.settings.range_generator'
         prompt: 'Add new item'
