@@ -13,6 +13,7 @@ class CharacteristicsHeroFormatter extends Formatter
     {
         $this->setFormatter(function (CharacteristicsHero $characteristicsHero) {
             return [
+                'id' => $characteristicsHero->characteristicData->id,
                 'name' => $characteristicsHero->characteristicData->title,
                 'code' => $characteristicsHero->characteristicData->slug,
                 'value' => $characteristicsHero->value,
@@ -47,6 +48,7 @@ class HeroFormatter extends Formatter
             $fieldHeroFormatter
         ) {
             return [
+                'id' => $hero->id,
                 'name' => $hero->name,
                 'properties' => [
                     'homeWorld' => $hero->homeWorld->title,
