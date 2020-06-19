@@ -97,6 +97,16 @@ class HeroController extends ApiController
         return $this->responseFormatData($hero, $heroFormatter);
     }
 
+    public function updateName(): JsonResponse
+    {
+        $data = $this->getValidateJsonData(self::RULES_HERO_NAME);
+        $hero = Hero::find($data['hero_id']);
+        $this->checkHeroUser($hero);
+        $hero->name = $data['name'];
+        $hero->save();
+        return $this->responseSuccess();
+    }
+
     public function updateCharacteristics(HeroFormatter $heroFormatter): JsonResponse
     {
         $data = $this->getValidateJsonData(self::RULES_UPDATE_CHARACTERISTICS);
