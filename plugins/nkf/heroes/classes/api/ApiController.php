@@ -58,4 +58,9 @@ abstract class ApiController
     {
         return object_get($this->getUserByToken(), 'id');
     }
+
+    public function responseSuccess(): JsonResponse
+    {
+        return $this->responseJson(['is_success' => true]);
+    }
 }
