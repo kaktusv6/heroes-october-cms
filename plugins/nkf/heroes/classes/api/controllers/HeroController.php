@@ -106,17 +106,17 @@ class HeroController extends ApiController
         return $this->responseFormatData($hero, $heroFormatter);
     }
 
-    public function updateCharacteristic(CharacteristicsHeroFormatter $formatter): JsonResponse
+    public function updateCharacteristic(): JsonResponse
     {
         $data = $this->getValidateJsonData(self::RULES_CHARACTERISTIC);
         $hero = Hero::find($data['hero_id']);
         $this->checkHeroUser($hero);
-        $characteristic = Characteristic::whereSlug($data['code'])->first();
+        $characteristic = Characteristic::find($data['characteristic_id']);
         /** @var CharacteristicsHero $characteristicValue */
         $characteristicValue = $hero->characteristics()->whereCharacteristicId($characteristic->id)->first();
         $characteristicValue->value = (int)$data['value'];
         $characteristicValue->save();
-        return $this->responseFormatData($characteristicValue, $formatter);
+        return $this->responseSuccess();
     }
 
     public function updateField(FieldHeroFormatter $formatter): JsonResponse
