@@ -61,7 +61,7 @@ class HeroController extends ApiController
         }
     }
 
-    public function heroesUser(HeroFormatter $heroFormatter): JsonResponse
+    public function heroes(HeroFormatter $heroFormatter): JsonResponse
     {
         $data = $this->getValidateJsonData(self::RULES_HEROES_USER);
         return $this->responseFormatList(
@@ -70,7 +70,7 @@ class HeroController extends ApiController
                 ->user
                 ->heroes()
                 ->whereGameId($data['game_id'])
-                ->first(),
+                ->get(),
             $heroFormatter
         );
     }
