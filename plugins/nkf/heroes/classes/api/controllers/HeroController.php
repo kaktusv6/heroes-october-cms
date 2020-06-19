@@ -37,9 +37,14 @@ class HeroController extends ApiController
 
     const RULES_HERO = ['hero_id' => 'required|numeric|min:1'];
 
+    const RULES_HERO_NAME = [
+        'hero_id' => 'required|numeric|min:1',
+        'name' => 'required',
+    ];
+
     const RULES_CHARACTERISTIC = [
         'hero_id' => 'required|numeric',
-        'code' => 'required',
+        'characteristic_id' => 'required|numeric',
         'value' => 'required|numeric',
     ];
 
