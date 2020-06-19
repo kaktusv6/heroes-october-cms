@@ -17,12 +17,14 @@ Route::group(['prefix' => 'api', 'middleware' => ApiKey::ALIAS], function () {
         Route::get('test', TestController::class . '@test');
         Route::post('/user/logout', UserController::class . '@logout');
 
-        Route::get('heroes', HeroController::class . '@heroesUser');
+        Route::post('heroes', HeroController::class . '@heroes');
         Route::group(['prefix' => 'hero'], function () {
             Route::post('/', HeroController::class . '@hero');
-            Route::put('/characteristic/update', HeroController::class . '@updateCharacteristic');
-            Route::put('/field/update', HeroController::class . '@updateField');
-            // TODO: Develop new routes for update data hero
+            Route::group(['prefix' => 'update'], function () {
+                Route::put('name', HeroController::class . '@updateName');
+                Route::put('characteristic', HeroController::class . '@updateCharacteristic');
+                Route::put('field', HeroController::class . '@updateField');
+            });
             Route::delete('remove', HeroController::class . '@remove');
         });
     });
