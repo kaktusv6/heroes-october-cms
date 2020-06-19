@@ -86,7 +86,6 @@ class HeroController extends ApiController
 
     public function update(HeroFormatter $heroFormatter): JsonResponse
     {
-        $userIdByToken = UsersToken::whereToken($this->getToken())->first()->user_id;
         $data = $this->getValidateJsonData(self::RULES_UPDATE);
         $hero = Hero::find($data['hero_id']);
         $this->checkHeroUser($hero);
