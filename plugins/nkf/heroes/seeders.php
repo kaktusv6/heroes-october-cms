@@ -128,8 +128,8 @@ class FixtureSeeder extends Seeder
                 $characteristic = new Characteristic;
                 $characteristic->title = $characteristicData['title'];
                 $characteristic->description = $this->faker->text;
-                $characteristic->range = [['min' => 0, 'max' => 100]];
-                $characteristic->range_generator = [['min' => 20, 'max' => 40]];
+                $characteristic->range = ['min' => 0, 'max' => 100];
+                $characteristic->range_generator = ['min' => 20, 'max' => 40];
                 $characteristic->save();
                 $characteristic->games()->sync($gameId);
             }
