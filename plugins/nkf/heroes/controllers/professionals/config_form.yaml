@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Professional
+
+# Model Form Field configuration
+form: $/nkf/heroes/models/professional/fields.yaml
+
+# Model Class name
+modelClass: Nkf\Heroes\Models\Professional
+
+# Default redirect location
+defaultRedirect: nkf/heroes/professionals
+
+# Create page
+create:
+    title: Create Professional
+    redirect: nkf/heroes/professionals/update/:id
+    redirectClose: nkf/heroes/professionals
+
+# Update page
+update:
+    title: Edit Professional
+    redirect: nkf/heroes/professionals
+    redirectClose: nkf/heroes/professionals
+
+# Preview page
+preview:
+    title: Preview Professional
