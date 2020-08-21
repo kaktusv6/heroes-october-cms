@@ -34,6 +34,10 @@ navigation:
                 label: 'nkf.heroes::lang.settings.home_worlds'
                 url: nkf/heroes/homeworlds
                 icon: icon-adjust
+            professionals:
+                label: 'nkf.heroes::lang.settings.professionals'
+                url: nkf/heroes/professionals
+                icon: icon-graduation-cap
     api:
         label: 'nkf.heroes::lang.settings.api'
         url: nkf/heroes/api

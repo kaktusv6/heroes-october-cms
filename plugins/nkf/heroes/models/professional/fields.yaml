@@ -1,0 +1,23 @@
+fields:
+    name:
+        label: 'nkf.heroes::lang.settings.name'
+        span: auto
+        type: text
+    code:
+        label: 'nkf.heroes::lang.settings.code'
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    description:
+        label: 'nkf.heroes::lang.settings.description'
+        size: large
+        span: auto
+        type: textarea
+    games:
+        label: 'nkf.heroes::lang.settings.games'
+        span: auto
+        nameFrom: title
+        descriptionFrom: description
+        type: relation

@@ -48,3 +48,6 @@
 1.1.7:
     - 'Add code to characteristics'
     - 2020_05_10_0637_add_code_to_characteristics.php
+1.1.8:
+    - 'Create professionals'
+    - 2020_07_06_0422_create_professionals.php

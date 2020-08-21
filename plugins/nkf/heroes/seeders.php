@@ -5,6 +5,7 @@ use Nkf\Heroes\Models\CharacteristicsHero;
 use Nkf\Heroes\Models\Field;
 use Nkf\Heroes\Models\FieldsHero;
 use Nkf\Heroes\Models\HomeWorld;
+use Nkf\Heroes\Models\Professional;
 use Nkf\Heroes\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
@@ -193,6 +194,34 @@ class FixtureSeeder extends Seeder
                 $field->type = $item['type'];
                 $field->save();
                 $field->games()->sync($gameId);
+            }
+
+            foreach ([
+                         [
+                             'name' => 'Адепт',
+                         ],
+                         [
+                             'name' => 'Убийца',
+                         ],
+                         [
+                             'name' => 'Гвардеец',
+                         ],
+                         [
+                             'name' => 'Псайкер',
+                         ],
+                         [
+                             'name' => 'Подонок',
+                         ],
+                         [
+                             'name' => 'Техножрец',
+                         ],
+                     ] as $professionalItem) {
+                $professional = new Professional;
+                $professional->name = $professionalItem['name'];
+                $professional->description = $this->faker->text;
+                // TODO: Add Condition
+                $professional->save();
+                $professional->games()->sync($gameId);
             }
         }
 
